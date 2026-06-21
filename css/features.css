@@ -290,3 +290,913 @@ body.theme-midnight textarea:focus, body.theme-midnight input:focus, body.theme-
     will-change: transform, opacity;
 }
 
+/* ========================================================
+   INTERACTIVE SERVICE SHOWCASES
+   ======================================================== */
+
+/* --- Grid Layout --- */
+.services-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 28px;
+}
+
+/* Tarot spans 2 columns */
+.service-showcase[data-service="tarot-reading"] {
+    grid-column: span 2;
+}
+
+/* Holistic Wellness spans full width */
+.service-showcase[data-service="holistic-wellness"] {
+    grid-column: span 3;
+}
+
+/* Base wrapper for all showcases */
+.service-showcase {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(195, 166, 216, 0.2);
+    box-shadow: var(--shadow);
+    transition: box-shadow var(--transition), border-color var(--transition);
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-showcase:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(155, 123, 191, 0.4);
+}
+
+/* Service showcase footer link */
+.showcase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--secondary);
+    text-decoration: none;
+    transition: gap var(--transition), color var(--transition);
+    margin-top: auto;
+    padding: 0 28px 24px;
+}
+
+.showcase-link:hover {
+    gap: 12px;
+    color: var(--primary-dark);
+}
+
+/* Shared title strip at bottom of visual */
+.showcase-info {
+    padding: 20px 28px 12px;
+}
+
+.showcase-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.showcase-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   1. TAROT READING — Flip Cards
+   ========================================= */
+.tarot-showcase {
+    background: linear-gradient(135deg, #1a1425 0%, #2d1b4e 60%, #3d2260 100%);
+    border-color: rgba(195, 166, 216, 0.3);
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 380px;
+}
+
+.tarot-showcase .showcase-info h3,
+.tarot-showcase .showcase-info p {
+    color: rgba(232, 223, 240, 0.95);
+}
+
+.tarot-showcase .showcase-info p {
+    color: rgba(195, 166, 216, 0.8);
+}
+
+.tarot-showcase .showcase-link {
+    color: var(--accent);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.tarot-cards-area {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 28px;
+    flex: 1;
+}
+
+.tarot-info-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 32px 32px 0;
+    max-width: 220px;
+    flex-shrink: 0;
+}
+
+.tarot-info-area h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: rgba(232, 223, 240, 0.95);
+    margin-bottom: 10px;
+}
+
+.tarot-info-area p {
+    font-size: 0.88rem;
+    color: rgba(195, 166, 216, 0.8);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.tarot-hint {
+    font-size: 0.78rem;
+    color: rgba(212, 168, 67, 0.8);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.tarot-info-area .showcase-link {
+    color: var(--accent);
+    padding: 0;
+    margin-top: 0;
+}
+
+/* Single flip card */
+.tarot-flip-card {
+    width: 140px;
+    height: 220px;
+    perspective: 800px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.tarot-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarot-flip-card:hover .tarot-flip-inner,
+.tarot-flip-card.flipped .tarot-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.tarot-face,
+.tarot-back-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* Card front — decorative back design */
+.tarot-face {
+    background: linear-gradient(160deg, #3d2260, #5B3A7A);
+    border: 2px solid rgba(212, 168, 67, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tarot-face::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(212, 168, 67, 0.25);
+    border-radius: 8px;
+}
+
+.tarot-face-pattern {
+    width: 60px;
+    height: 60px;
+    opacity: 0.6;
+}
+
+.tarot-face-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212, 168, 67, 0.8);
+    margin-top: 4px;
+}
+
+/* Card reveal side */
+.tarot-back-face {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px;
+    box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
+}
+
+.tarot-back-face img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.tarot-card-name {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    text-align: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    width: calc(100% + 24px);
+    margin: 0 -12px -12px;
+    padding: 24px 12px 12px;
+    border-radius: 0 0 10px 10px;
+}
+
+.tarot-card-meaning {
+    font-size: 0.72rem;
+    display: block;
+    color: rgba(212, 168, 67, 0.9);
+    margin-top: 3px;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-weight: 400;
+}
+
+
+/* =========================================
+   2. CHILD HEALING — Speech Bubble Scene
+   ========================================= */
+.child-showcase {
+    background: #f9f4ff;
+    min-height: 340px;
+}
+
+.child-scene-wrapper {
+    position: relative;
+    flex: 1;
+    min-height: 220px;
+    overflow: hidden;
+}
+
+.child-scene-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.child-showcase:hover .child-scene-img {
+    transform: scale(1.04);
+}
+
+/* Speech bubbles */
+.speech-bubble {
+    position: absolute;
+    background: white;
+    border-radius: 16px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text);
+    box-shadow: 0 4px 16px rgba(91, 58, 122, 0.12);
+    border: 1px solid rgba(195, 166, 216, 0.3);
+    max-width: 140px;
+    line-height: 1.4;
+    opacity: 0;
+    transform: scale(0.6) translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 18px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid white;
+}
+
+.bubble-counselor {
+    top: 18px;
+    right: 20px;
+    transition-delay: 0.05s;
+}
+
+.bubble-counselor::after {
+    left: auto;
+    right: 18px;
+    border-top-color: white;
+}
+
+.bubble-child {
+    top: 45%;
+    left: 16px;
+    transition-delay: 0.18s;
+}
+
+.bubble-child::after {
+    left: 16px;
+}
+
+.child-showcase:hover .speech-bubble {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+
+/* =========================================
+   3. TRAUMA HEALING — Healing Heart
+   ========================================= */
+.trauma-showcase {
+    background: linear-gradient(135deg, #fff5f7 0%, #fef0f8 100%);
+    align-items: center;
+    text-align: center;
+}
+
+.heart-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px 16px;
+    position: relative;
+}
+
+.heart-svg-wrap {
+    position: relative;
+    width: 130px;
+    height: 120px;
+}
+
+/* Glow pulse on hover */
+.trauma-showcase:hover .heart-svg-wrap::after {
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+.heart-svg-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(219, 112, 147, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.heart-main {
+    fill: #e8a0b4;
+    transition: fill 0.5s ease;
+}
+
+.trauma-showcase:hover .heart-main {
+    fill: #e07090;
+}
+
+.heart-crack {
+    fill: none;
+    stroke: #c0607a;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.6s ease, stroke 0.5s ease, opacity 0.5s ease;
+}
+
+.trauma-showcase:hover .heart-crack {
+    stroke-dashoffset: 60;
+    opacity: 0;
+}
+
+.heart-glow-path {
+    fill: none;
+    stroke: rgba(212, 168, 67, 0.0);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.8s ease 0.3s, stroke 0.5s ease 0.2s;
+}
+
+.trauma-showcase:hover .heart-glow-path {
+    stroke: rgba(212, 168, 67, 0.6);
+    stroke-dashoffset: 0;
+}
+
+.heart-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--secondary);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.4s ease 0.3s;
+}
+
+.trauma-showcase:hover .heart-label {
+    opacity: 1;
+}
+
+.trauma-showcase .showcase-info {
+    text-align: left;
+}
+
+
+/* =========================================
+   4. PARENTING GUIDANCE — Open Book
+   ========================================= */
+.parenting-showcase {
+    background: linear-gradient(135deg, #fffbf0 0%, #fff8e8 100%);
+}
+
+.book-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px 12px;
+    perspective: 700px;
+}
+
+.book-wrap {
+    position: relative;
+    width: 190px;
+    height: 140px;
+    transform-style: preserve-3d;
+    display: flex;
+    gap: 3px;
+}
+
+.book-page {
+    flex: 1;
+    border-radius: 4px 2px 2px 4px;
+    background: #fffdf5;
+    border: 1px solid rgba(212, 168, 67, 0.35);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+    padding: 10px 12px;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: right center;
+    position: relative;
+}
+
+.book-page.right-page {
+    border-radius: 2px 4px 4px 2px;
+    transform-origin: left center;
+}
+
+.book-spine {
+    width: 8px;
+    background: linear-gradient(180deg, #D4A843, #b8892a);
+    border-radius: 2px;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px rgba(212, 168, 67, 0.3);
+    position: relative;
+}
+
+.book-spine::after {
+    content: '';
+    position: absolute;
+    inset: 4px 2px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 1px;
+}
+
+.parenting-showcase:hover .book-page {
+    transform: rotate(-6deg);
+}
+
+.parenting-showcase:hover .right-page {
+    transform: rotate(6deg);
+}
+
+.page-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 4px;
+}
+
+.page-line {
+    height: 2px;
+    border-radius: 1px;
+    background: rgba(212, 168, 67, 0.25);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.page-line:nth-child(1) { width: 85%; transition-delay: 0.1s; }
+.page-line:nth-child(2) { width: 70%; transition-delay: 0.18s; }
+.page-line:nth-child(3) { width: 90%; transition-delay: 0.26s; }
+.page-line:nth-child(4) { width: 60%; transition-delay: 0.34s; }
+.page-line:nth-child(5) { width: 80%; transition-delay: 0.42s; }
+
+.parenting-showcase:hover .page-line {
+    transform: scaleX(1);
+}
+
+.page-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.18;
+    font-size: 1.6rem;
+}
+
+
+/* =========================================
+   5. CAREER COUNSELLING — Compass
+   ========================================= */
+.career-showcase {
+    background: linear-gradient(135deg, #f4f0ff 0%, #ede6ff 100%);
+    text-align: center;
+}
+
+.compass-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px 12px;
+    position: relative;
+}
+
+.compass-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.compass-ring {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 2px solid rgba(91, 58, 122, 0.2);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(240, 230, 255, 0.6) 100%);
+    box-shadow: 0 0 0 6px rgba(195, 166, 216, 0.1), inset 0 0 20px rgba(155, 123, 191, 0.08);
+    transition: box-shadow 0.5s ease;
+}
+
+.career-showcase:hover .compass-ring {
+    box-shadow: 0 0 0 10px rgba(195, 166, 216, 0.15), inset 0 0 30px rgba(155, 123, 191, 0.12),
+                0 0 30px rgba(195, 166, 216, 0.3);
+}
+
+.compass-directions {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.compass-dir {
+    position: absolute;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(91, 58, 122, 0.5);
+    letter-spacing: 1px;
+}
+
+.compass-dir.north { top: 5px; left: 50%; transform: translateX(-50%); color: var(--secondary); }
+.compass-dir.south { bottom: 5px; left: 50%; transform: translateX(-50%); }
+.compass-dir.east  { right: 8px; top: 50%; transform: translateY(-50%); }
+.compass-dir.west  { left: 8px; top: 50%; transform: translateY(-50%); }
+
+/* North replaced with PURPOSE label */
+.compass-dir.north::before {
+    content: 'PURPOSE';
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    color: var(--secondary);
+    display: block;
+    text-align: center;
+}
+
+.compass-needle-group {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.career-showcase:hover .compass-needle-group {
+    transform: rotate(360deg);
+}
+
+.compass-needle {
+    width: 4px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%) rotate(0deg);
+    transform-origin: bottom center;
+}
+
+.needle-n {
+    background: linear-gradient(to top, #5B3A7A, #9B7BBF);
+    border-radius: 2px 2px 0 0;
+    height: 28px;
+    transform-origin: bottom center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.needle-s {
+    background: linear-gradient(to bottom, #C3A6D8, rgba(195, 166, 216, 0.4));
+    border-radius: 0 0 2px 2px;
+    height: 20px;
+    transform-origin: top center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.compass-center-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--secondary);
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0 0 0 3px rgba(195, 166, 216, 0.4);
+}
+
+.career-showcase .showcase-info {
+    text-align: left;
+}
+
+
+/* =========================================
+   6. HOLISTIC WELLNESS — Venn Circles
+   ========================================= */
+.wellness-showcase {
+    background: linear-gradient(135deg, #f4fff8 0%, #f0f8ff 50%, #f8f4ff 100%);
+    min-height: 300px;
+}
+
+.venn-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 40px 16px;
+    position: relative;
+}
+
+.venn-wrap {
+    position: relative;
+    width: 280px;
+    height: 160px;
+}
+
+.venn-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: multiply;
+}
+
+.venn-circle .circle-label {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.3s;
+    white-space: nowrap;
+}
+
+.wellness-showcase:hover .circle-label {
+    opacity: 1;
+}
+
+.venn-mind {
+    background: rgba(195, 166, 216, 0.45);
+    border: 1.5px solid rgba(155, 123, 191, 0.4);
+    left: 0;
+    color: var(--secondary);
+}
+
+.venn-mind .circle-label { top: -24px; left: 50%; transform: translateX(-50%); color: var(--secondary); }
+
+.venn-body {
+    background: rgba(130, 190, 150, 0.45);
+    border: 1.5px solid rgba(100, 160, 120, 0.4);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #3a7a5a;
+}
+
+.venn-body .circle-label { bottom: -24px; left: 50%; transform: translateX(-50%); color: #3a7a5a; }
+
+.venn-spirit {
+    background: rgba(212, 168, 67, 0.45);
+    border: 1.5px solid rgba(180, 140, 40, 0.4);
+    right: 0;
+    color: #7a5a10;
+}
+
+.venn-spirit .circle-label { top: -24px; left: 50%; transform: translateX(-50%); color: #8a6a15; }
+
+/* On hover — circles drift closer to overlap */
+.wellness-showcase:hover .venn-mind   { left: 40px; }
+.wellness-showcase:hover .venn-body   { left: 50%; transform: translate(-50%, -50%); }
+.wellness-showcase:hover .venn-spirit { right: 40px; }
+
+/* Center glow that appears on overlap */
+.venn-center-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(220, 200, 255, 0.4) 60%, transparent 80%);
+    opacity: 0;
+    transition: opacity 0.5s ease 0.3s, width 0.5s ease 0.2s, height 0.5s ease 0.2s;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.wellness-showcase:hover .venn-center-glow {
+    opacity: 1;
+    width: 70px;
+    height: 70px;
+}
+
+.venn-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.5s;
+    pointer-events: none;
+}
+
+.venn-center-text span {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.wellness-showcase:hover .venn-center-text {
+    opacity: 1;
+}
+
+.wellness-showcase .showcase-info {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 16px 32px 16px;
+}
+
+.wellness-showcase .showcase-info h3 {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.wellness-showcase .showcase-info p {
+    margin-bottom: 0;
+}
+
+.wellness-showcase .showcase-link {
+    padding: 0 32px 20px;
+}
+
+
+/* =========================================
+   RESPONSIVE — Services Showcase
+   ========================================= */
+@media (max-width: 900px) {
+    .services-showcase {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .service-showcase[data-service="tarot-reading"] {
+        grid-column: span 2;
+    }
+
+    .service-showcase[data-service="holistic-wellness"] {
+        grid-column: span 2;
+    }
+
+    .tarot-showcase {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .tarot-info-area {
+        padding: 0 28px 24px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .services-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .service-showcase[data-service="tarot-reading"],
+    .service-showcase[data-service="holistic-wellness"] {
+        grid-column: span 1;
+    }
+
+    .wellness-showcase .showcase-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .venn-wrap { width: 220px; height: 130px; }
+    .venn-circle { width: 95px; height: 95px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarot-flip-inner,
+    .compass-needle-group,
+    .book-page,
+    .venn-circle,
+    .heart-main,
+    .heart-crack,
+    .speech-bubble,
+    .page-line {
+        transition: none !important;
+        animation: none !important;
+    }
+}

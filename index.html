@@ -271,78 +271,197 @@
             <div class="section-header">
                 <span class="section-label reveal-text">Services</span>
                 <h2 class="section-title split-words">Paths to <em>Wellness</em></h2>
-                <p class="section-subtitle reveal-up">Each healing modality is designed to address different aspects of your well-being, creating a comprehensive approach to transformation.</p>
+                <p class="section-subtitle reveal-up">Each modality is designed to speak for itself. Hover to explore — and find the path that resonates with you.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal-card" data-service="trauma-healing">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+
+            <div class="services-showcase">
+
+                <!-- 1. TAROT READING — Two flip cards -->
+                <div class="service-showcase tarot-showcase" data-service="tarot-reading">
+                    <div class="tarot-cards-area">
+                        <div class="tarot-flip-card" id="tarot-card-star-home" role="button" aria-label="Flip The Star tarot card">
+                            <div class="tarot-flip-inner">
+                                <div class="tarot-face">
+                                    <svg class="tarot-face-pattern" viewBox="0 0 60 60" fill="none">
+                                        <path d="M30 5 L33 22 L50 22 L36 32 L41 50 L30 40 L19 50 L24 32 L10 22 L27 22 Z" stroke="rgba(212,168,67,0.7)" stroke-width="1.2" fill="none"/>
+                                        <circle cx="30" cy="30" r="20" stroke="rgba(212,168,67,0.3)" stroke-width="0.8" fill="none"/>
+                                        <circle cx="30" cy="30" r="26" stroke="rgba(212,168,67,0.15)" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/>
+                                    </svg>
+                                    <span class="tarot-face-label">Tarot</span>
+                                </div>
+                                <div class="tarot-back-face">
+                                    <img src="img/tarot_star.png" alt="The Star tarot card">
+                                    <div class="tarot-card-name">The Star<span class="tarot-card-meaning">Hope &amp; Renewal</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tarot-flip-card" id="tarot-card-empress-home" role="button" aria-label="Flip The Empress tarot card">
+                            <div class="tarot-flip-inner">
+                                <div class="tarot-face">
+                                    <svg class="tarot-face-pattern" viewBox="0 0 60 60" fill="none">
+                                        <path d="M30 8 C16 8 8 18 8 30 C8 42 18 52 30 52 C42 52 52 42 52 30 C52 18 42 8 30 8Z" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
+                                        <path d="M30 15 L32 24 L42 24 L34 30 L37 40 L30 34 L23 40 L26 30 L18 24 L28 24Z" stroke="rgba(212,168,67,0.7)" stroke-width="1" fill="none"/>
+                                        <circle cx="30" cy="30" r="4" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
+                                    </svg>
+                                    <span class="tarot-face-label">Tarot</span>
+                                </div>
+                                <div class="tarot-back-face">
+                                    <img src="img/tarot_empress.png" alt="The Empress tarot card">
+                                    <div class="tarot-card-name">The Empress<span class="tarot-card-meaning">Nurturing &amp; Abundance</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Trauma Healing</h3>
-                    <p>Release deep-seated emotional wounds and reclaim your inner peace. Through gentle, evidence-based techniques, we work together to process and heal from past experiences.</p>
-                    <a href="services/trauma-healing.html" class="service-link">
+                    <div class="tarot-info-area">
+                        <h3>Tarot Reading</h3>
+                        <p>A reflective mirror for patterns and possibilities already within you — not fortune-telling.</p>
+                        <p class="tarot-hint">✦ Hover the cards to reveal them</p>
+                        <a href="services/tarot-reading.html" class="showcase-link">
+                            Learn More
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. CHILD HEALING — Speech bubble scene -->
+                <div class="service-showcase child-showcase" data-service="child-healing">
+                    <div class="child-scene-wrapper">
+                        <img class="child-scene-img" src="img/service_child_healing_scene.png" alt="A warm counseling scene between a therapist and a child">
+                        <div class="speech-bubble bubble-counselor">"Let's explore this together, at your pace."</div>
+                        <div class="speech-bubble bubble-child">"I feel safe here."</div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>Child Healing</h3>
+                        <p>A nurturing space where young minds can express, process, and grow.</p>
+                    </div>
+                    <a href="services/child-healing.html" class="showcase-link">
                         Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="service-card reveal-card" data-service="child-healing">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+
+                <!-- 3. TRAUMA HEALING — Healing heart SVG -->
+                <div class="service-showcase trauma-showcase" data-service="trauma-healing">
+                    <div class="heart-stage">
+                        <div class="heart-svg-wrap">
+                            <svg viewBox="0 0 130 120" width="130" height="120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path class="heart-main" d="M65 105 C65 105 15 72 15 42 C15 24 28 12 42 12 C52 12 60 18 65 25 C70 18 78 12 88 12 C102 12 115 24 115 42 C115 72 65 105 65 105Z"/>
+                                <path class="heart-crack" d="M60 30 L68 45 L58 55 L66 70 L60 82"/>
+                                <path class="heart-glow-path" d="M55 28 C60 36 70 42 62 56 C56 65 65 75 62 85"/>
+                            </svg>
+                            <span class="heart-label">Healing begins here</span>
+                        </div>
                     </div>
-                    <h3>Child Healing</h3>
-                    <p>Nurturing therapeutic support for children facing emotional or behavioural challenges. Creating a safe space where young minds can express, process, and grow.</p>
-                    <a href="services/child-healing.html" class="service-link">
+                    <div class="showcase-info">
+                        <h3>Trauma Healing</h3>
+                        <p>Release deep-seated wounds and reclaim your inner peace through gentle, evidence-informed support.</p>
+                    </div>
+                    <a href="services/trauma-healing.html" class="showcase-link">
                         Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="service-card reveal-card" data-service="tarot-reading">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+
+                <!-- 4. PARENTING GUIDANCE — Open book -->
+                <div class="service-showcase parenting-showcase" data-service="parenting-guidance">
+                    <div class="book-stage">
+                        <div class="book-wrap" aria-hidden="true">
+                            <div class="book-page">
+                                <div class="page-lines">
+                                    <div class="page-line"></div><div class="page-line"></div>
+                                    <div class="page-line"></div><div class="page-line"></div>
+                                    <div class="page-line"></div>
+                                </div>
+                                <span class="page-icon">🌱</span>
+                            </div>
+                            <div class="book-spine"></div>
+                            <div class="book-page right-page">
+                                <div class="page-lines">
+                                    <div class="page-line"></div><div class="page-line"></div>
+                                    <div class="page-line"></div><div class="page-line"></div>
+                                    <div class="page-line"></div>
+                                </div>
+                                <span class="page-icon">🤝</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Tarot Reading</h3>
-                    <p>Reflective tarot guidance — a mirror for patterns and possibilities, not fortune-telling.</p>
-                    <a href="services/tarot-reading.html" class="service-link">
+                    <div class="showcase-info">
+                        <h3>Parenting Guidance</h3>
+                        <p>Navigate the complexities of parenthood with expert, compassionate guidance.</p>
+                    </div>
+                    <a href="services/parenting-guidance.html" class="showcase-link">
                         Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="service-card reveal-card" data-service="parenting-guidance">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+
+                <!-- 5. CAREER COUNSELLING — Spinning compass -->
+                <div class="service-showcase career-showcase" data-service="career-counselling">
+                    <div class="compass-stage">
+                        <div class="compass-wrap" aria-hidden="true">
+                            <div class="compass-ring">
+                                <div class="compass-directions">
+                                    <span class="compass-dir north">▲</span>
+                                    <span class="compass-dir south">S</span>
+                                    <span class="compass-dir east">E</span>
+                                    <span class="compass-dir west">W</span>
+                                </div>
+                                <div class="compass-needle-group">
+                                    <div class="compass-needle">
+                                        <div class="needle-n"></div>
+                                        <div class="needle-s"></div>
+                                    </div>
+                                    <div class="compass-center-dot"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Parenting Guidance</h3>
-                    <p>Navigate the beautiful complexities of parenthood with expert guidance. Build stronger connections with your children and foster a nurturing family environment.</p>
-                    <a href="services/parenting-guidance.html" class="service-link">
+                    <div class="showcase-info">
+                        <h3>Career Counselling</h3>
+                        <p>Find your true professional calling and align your work with your inner purpose.</p>
+                    </div>
+                    <a href="services/career-counselling.html" class="showcase-link">
                         Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="service-card reveal-card" data-service="career-counselling">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+
+                <!-- 6. HOLISTIC WELLNESS — Venn circles -->
+                <div class="service-showcase wellness-showcase" data-service="holistic-wellness">
+                    <div class="venn-stage">
+                        <div class="venn-wrap" aria-hidden="true">
+                            <div class="venn-circle venn-mind"><span class="circle-label">Mind</span></div>
+                            <div class="venn-circle venn-body"><span class="circle-label">Body</span></div>
+                            <div class="venn-circle venn-spirit"><span class="circle-label">Spirit</span></div>
+                            <div class="venn-center-glow"></div>
+                            <div class="venn-center-text"><span>Whole</span><span>Being</span></div>
+                        </div>
                     </div>
-                    <h3>Career Counselling</h3>
-                    <p>Discover your true professional calling and overcome career-related stress. Align your work life with your inner purpose for lasting fulfilment and success.</p>
-                    <a href="services/career-counselling.html" class="service-link">
+                    <div class="showcase-info">
+                        <h3>Holistic Wellness</h3>
+                        <p>An integrative approach that treats mind, body, and spirit as one unified whole.</p>
+                    </div>
+                    <a href="services/holistic-wellness.html" class="showcase-link">
                         Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
-                <div class="service-card reveal-card" data-service="holistic-wellness">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                    </div>
-                    <h3>Holistic Wellness</h3>
-                    <p>An integrative approach that treats mind, body, and spirit as one. Combining multiple healing modalities for complete well-being and lasting transformation.</p>
-                    <a href="services/holistic-wellness.html" class="service-link">
-                        Learn More
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
+
+            </div><!-- /.services-showcase -->
+
+            <div style="text-align:center; margin-top:40px;">
+                <a href="services.html" class="btn btn-secondary magnetic">Explore All Services</a>
             </div>
         </div>
     </section>
+
+    <script>
+        // Mobile tap-to-flip for homepage tarot cards
+        document.querySelectorAll('.tarot-flip-card').forEach(card => {
+            card.addEventListener('click', () => card.classList.toggle('flipped'));
+        });
+    </script>
+
 
     <!-- ========== INTERACTIVE TAROT SECTION ========== -->
     <section class="tarot-interactive section" id="tarot-reading">
