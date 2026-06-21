@@ -255,8 +255,8 @@ document.querySelectorAll('.hero-title .title-line').forEach(line => {
 heroTl
     .from('.hero-badge', { y: 30, opacity: 0, scale: 0.8, duration: 0.8 }, 0)
     .from('.hero-subtitle', { y: 40, opacity: 0, duration: 1 }, '-=0.5')
-    .from('.hero-buttons .btn', { y: 30, opacity: 0, duration: 0.8, stagger: 0.15 }, '-=0.6')
-    .from('.hero-scroll-indicator', { opacity: 0, y: 20, duration: 0.6 }, '-=0.3');
+    .from('.hero-meditating-art', { scale: 0.8, opacity: 0, duration: 1.5, ease: 'power3.out' }, 0.2)
+    .from('.affirmation-container', { y: 30, opacity: 0, duration: 0.8 }, '-=0.4');
 
 } // end hero animations
 
@@ -600,14 +600,19 @@ document.querySelectorAll('.service-card h3').forEach(title => {
 // IMMERSIVE & KINETIC HOOKS — Dr. Gargee Gadgil
 // ==========================================
 
-// 1. DYNAMIC BACKGROUND THEME SWAPPER (ScrollTrigger Mood Shift)
+// 1. DYNAMIC BACKGROUND THEME SWAPPER (ScrollTrigger Mood Shift) & SERVICE VISUALS
 const sections = [
     { id: 'hero', theme: 'theme-lavender' },
     { id: 'about', theme: 'theme-lavender' },
     { id: 'steps', theme: 'theme-lavender' },
     { id: 'services', theme: 'theme-lavender' },
-    { id: 'tarot-reading', theme: 'theme-midnight' }, // Surprise midnight depth for Tarot!
-    { id: 'approach', theme: 'theme-sage' }, // Tranquil natural sage for breathing guide!
+    { id: 'service-tarot-reading', theme: 'theme-midnight' },
+    { id: 'service-child-healing', theme: 'theme-lavender' },
+    { id: 'service-trauma-healing', theme: 'theme-dusk' },
+    { id: 'service-parenting-guidance', theme: 'theme-lavender' },
+    { id: 'service-career-counselling', theme: 'theme-lavender' },
+    { id: 'service-holistic-wellness', theme: 'theme-sage' },
+    { id: 'approach', theme: 'theme-sage' },
     { id: 'testimonials', theme: 'theme-lavender' },
     { id: 'contact', theme: 'theme-lavender' }
 ];
@@ -628,6 +633,89 @@ sections.forEach(sec => {
 function updateBodyTheme(themeName) {
     document.body.classList.remove('theme-lavender', 'theme-midnight', 'theme-gold', 'theme-sage', 'theme-dusk');
     document.body.classList.add(themeName);
+}
+
+// 1b. ScrollTrigger animations for upscaled service section visuals
+if (document.getElementById('service-child-healing')) {
+    ScrollTrigger.create({
+        trigger: '#service-child-healing',
+        start: 'top 60%',
+        once: true,
+        onEnter: () => {
+            gsap.to('#service-child-healing .speech-bubble', {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'back.out(1.5)',
+            });
+        }
+    });
+}
+
+if (document.getElementById('service-trauma-healing')) {
+    ScrollTrigger.create({
+        trigger: '#service-trauma-healing',
+        start: 'top 60%',
+        once: true,
+        onEnter: () => {
+            gsap.timeline()
+                .to('#service-trauma-healing .heart-main', { fill: '#e07090', scale: 1.1, duration: 0.5, yoyo: true, repeat: 1 })
+                .to('#service-trauma-healing .heart-crack', { strokeDashoffset: 60, opacity: 0, duration: 0.6 }, 0)
+                .to('#service-trauma-healing .heart-glow-path', { stroke: 'rgba(212, 168, 67, 0.6)', strokeDashoffset: 0, duration: 0.8 }, 0.2)
+                .to('#service-trauma-healing .heart-label', { opacity: 1, duration: 0.4 }, 0.4);
+        }
+    });
+}
+
+if (document.getElementById('service-parenting-guidance')) {
+    ScrollTrigger.create({
+        trigger: '#service-parenting-guidance',
+        start: 'top 60%',
+        once: true,
+        onEnter: () => {
+            gsap.timeline()
+                .to('#service-parenting-guidance .book-page', { rotate: -6, duration: 0.6 })
+                .to('#service-parenting-guidance .right-page', { rotate: 6, duration: 0.6 }, 0)
+                .to('#service-parenting-guidance .page-line', {
+                    scaleX: 1,
+                    duration: 0.4,
+                    stagger: 0.08
+                }, 0.2);
+        }
+    });
+}
+
+if (document.getElementById('service-career-counselling')) {
+    ScrollTrigger.create({
+        trigger: '#service-career-counselling',
+        start: 'top 60%',
+        once: true,
+        onEnter: () => {
+            gsap.to('#service-career-counselling .compass-needle-group', {
+                rotation: 360,
+                duration: 1.2,
+                ease: 'back.out(1.5)'
+            });
+        }
+    });
+}
+
+if (document.getElementById('service-holistic-wellness')) {
+    ScrollTrigger.create({
+        trigger: '#service-holistic-wellness',
+        start: 'top 60%',
+        once: true,
+        onEnter: () => {
+            gsap.timeline()
+                .to('#service-holistic-wellness .venn-mind', { left: 50, duration: 0.8 })
+                .to('#service-holistic-wellness .venn-spirit', { right: 50, duration: 0.8 }, 0)
+                .to('#service-holistic-wellness .circle-label', { opacity: 1, duration: 0.4 }, 0.4)
+                .to('#service-holistic-wellness .venn-center-glow', { opacity: 1, width: 70, height: 70, duration: 0.6 }, 0.4)
+                .to('#service-holistic-wellness .venn-center-text', { opacity: 1, duration: 0.4 }, 0.6);
+        }
+    });
 }
 
 // 2. DAILY AFFIRMATION GENERATOR

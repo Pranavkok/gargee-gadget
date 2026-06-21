@@ -31,36 +31,67 @@
             <div class="shape shape-5" data-speed="0.1"></div>
             <div class="shape shape-6" data-speed="0.3"></div>
         </div>
+        
+        <!-- Centered Meditating SVG Figure -->
+        <div class="hero-meditating-art">
+            <svg class="meditating-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Glowing background aura rings (breathing) -->
+                <circle class="aura-ring aura-ring-1" cx="200" cy="210" r="130" />
+                <circle class="aura-ring aura-ring-2" cx="200" cy="210" r="90" />
+                <circle class="aura-ring aura-ring-3" cx="200" cy="210" r="50" />
+                
+                <g class="meditating-figure">
+                    <!-- Head -->
+                    <circle class="figure-head" cx="200" cy="115" r="22" />
+                    
+                    <!-- Neck and Torso -->
+                    <path class="figure-torso" d="M200,137 C200,160 215,200 215,250 C215,270 205,280 200,280 C195,280 185,270 185,250 C185,200 200,137 200,137 Z" />
+                    
+                    <!-- Left arm/hand resting on knee -->
+                    <path class="figure-arm-left" d="M190,155 C160,175 140,210 140,245 C140,265 155,270 165,270" />
+                    
+                    <!-- Right arm/hand resting on knee -->
+                    <path class="figure-arm-right" d="M210,155 C240,175 260,210 260,245 C260,265 245,270 235,270" />
+                    
+                    <!-- Left Leg (Lotus pose) -->
+                    <path class="figure-leg-left" d="M185,260 C150,265 110,275 110,290 C110,310 170,310 200,310" />
+                    
+                    <!-- Right Leg (Lotus pose) -->
+                    <path class="figure-leg-right" d="M215,260 C250,265 290,275 290,290 C290,310 230,310 200,310" />
+
+                    <!-- Glowing chakras -->
+                    <circle class="chakra-dot crown" cx="200" cy="98" r="3.5" />
+                    <circle class="chakra-dot third-eye" cx="200" cy="115" r="4.5" />
+                    <circle class="chakra-dot throat" cx="200" cy="142" r="4" />
+                    <circle class="chakra-dot heart" cx="200" cy="180" r="5" />
+                    <circle class="chakra-dot solar" cx="200" cy="215" r="5" />
+                    <circle class="chakra-dot sacral" cx="200" cy="250" r="4.5" />
+                    <circle class="chakra-dot root" cx="200" cy="275" r="4" />
+                </g>
+            </svg>
+        </div>
+
         <div class="container hero-content">
             <div class="hero-badge">Holistic Healing</div>
             <h1 class="hero-title split-chars">
                 <span class="title-line">Healing Begins</span>
-                <span class="title-line title-accent">Within <em>You</em></span>
+                <span class="title-line title-accent">With <em>You</em></span>
             </h1>
             <p class="hero-subtitle" id="heroMoodLine">A safe, compassionate space for transformation.</p>
             <p class="hero-subtitle" id="heroMoodSub" style="margin-top:-12px;font-size:1rem;">
                 Dr. Gargee Gadgil guides you through trauma healing, inner child work, tarot reflection, and holistic wellness — helping you reclaim your peace and purpose.
             </p>
-
-            <!-- Daily Affirmation Card -->
-            <div class="affirmation-container reveal-up">
-                <div class="affirmation-card">
-                    <span class="affirmation-label">Daily Affirmation</span>
-                    <p class="affirmation-text" id="affirmationText">"I am worthy of peace, healing, and a quiet mind."</p>
-                    <button class="affirmation-refresh-btn magnetic" id="refreshAffirmation" aria-label="New Affirmation">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="hero-buttons">
-                <a href="contact.html" class="btn btn-primary magnetic">Book a Session</a>
-                <a href="services.html#path-finder" class="btn btn-secondary magnetic">Find Your Path</a>
-            </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+
+        <!-- Daily Affirmation Card (Positioned at bottom) -->
+        <div class="affirmation-container reveal-up">
+            <div class="affirmation-card">
+                <span class="affirmation-label">Daily Affirmation</span>
+                <p class="affirmation-text" id="affirmationText">"I am worthy of peace, healing, and a quiet mind."</p>
+                <button class="affirmation-refresh-btn magnetic" id="refreshAffirmation" aria-label="New Affirmation">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -265,271 +296,234 @@
         </div>
     </div>
 
-    <!-- ========== SERVICES SECTION ========== -->
-    <section class="services section" id="services">
+    <!-- ========== SERVICES HEADER SECTION ========== -->
+    <section class="services-header-section" id="services">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label reveal-text">Services</span>
+            <div class="section-header" style="margin-bottom: 0;">
+                <span class="section-label reveal-text">Services Overview</span>
                 <h2 class="section-title split-words">Paths to <em>Wellness</em></h2>
-                <p class="section-subtitle reveal-up">Each modality is designed to speak for itself. Hover to explore — and find the path that resonates with you.</p>
-            </div>
-
-            <div class="services-showcase">
-
-                <!-- 1. TAROT READING — Two flip cards -->
-                <div class="service-showcase tarot-showcase" data-service="tarot-reading">
-                    <div class="tarot-cards-area">
-                        <div class="tarot-flip-card" id="tarot-card-star-home" role="button" aria-label="Flip The Star tarot card">
-                            <div class="tarot-flip-inner">
-                                <div class="tarot-face">
-                                    <svg class="tarot-face-pattern" viewBox="0 0 60 60" fill="none">
-                                        <path d="M30 5 L33 22 L50 22 L36 32 L41 50 L30 40 L19 50 L24 32 L10 22 L27 22 Z" stroke="rgba(212,168,67,0.7)" stroke-width="1.2" fill="none"/>
-                                        <circle cx="30" cy="30" r="20" stroke="rgba(212,168,67,0.3)" stroke-width="0.8" fill="none"/>
-                                        <circle cx="30" cy="30" r="26" stroke="rgba(212,168,67,0.15)" stroke-width="0.8" fill="none" stroke-dasharray="3 4"/>
-                                    </svg>
-                                    <span class="tarot-face-label">Tarot</span>
-                                </div>
-                                <div class="tarot-back-face">
-                                    <img src="img/tarot_star.png" alt="The Star tarot card">
-                                    <div class="tarot-card-name">The Star<span class="tarot-card-meaning">Hope &amp; Renewal</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tarot-flip-card" id="tarot-card-empress-home" role="button" aria-label="Flip The Empress tarot card">
-                            <div class="tarot-flip-inner">
-                                <div class="tarot-face">
-                                    <svg class="tarot-face-pattern" viewBox="0 0 60 60" fill="none">
-                                        <path d="M30 8 C16 8 8 18 8 30 C8 42 18 52 30 52 C42 52 52 42 52 30 C52 18 42 8 30 8Z" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
-                                        <path d="M30 15 L32 24 L42 24 L34 30 L37 40 L30 34 L23 40 L26 30 L18 24 L28 24Z" stroke="rgba(212,168,67,0.7)" stroke-width="1" fill="none"/>
-                                        <circle cx="30" cy="30" r="4" stroke="rgba(212,168,67,0.5)" stroke-width="1" fill="none"/>
-                                    </svg>
-                                    <span class="tarot-face-label">Tarot</span>
-                                </div>
-                                <div class="tarot-back-face">
-                                    <img src="img/tarot_empress.png" alt="The Empress tarot card">
-                                    <div class="tarot-card-name">The Empress<span class="tarot-card-meaning">Nurturing &amp; Abundance</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tarot-info-area">
-                        <h3>Tarot Reading</h3>
-                        <p>A reflective mirror for patterns and possibilities already within you — not fortune-telling.</p>
-                        <p class="tarot-hint">✦ Hover the cards to reveal them</p>
-                        <a href="services/tarot-reading.html" class="showcase-link">
-                            Learn More
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 2. CHILD HEALING — Speech bubble scene -->
-                <div class="service-showcase child-showcase" data-service="child-healing">
-                    <div class="child-scene-wrapper">
-                        <img class="child-scene-img" src="img/service_child_healing_scene.png" alt="A warm counseling scene between a therapist and a child">
-                        <div class="speech-bubble bubble-counselor">"Let's explore this together, at your pace."</div>
-                        <div class="speech-bubble bubble-child">"I feel safe here."</div>
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Child Healing</h3>
-                        <p>A nurturing space where young minds can express, process, and grow.</p>
-                    </div>
-                    <a href="services/child-healing.html" class="showcase-link">
-                        Learn More
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-                <!-- 3. TRAUMA HEALING — Healing heart SVG -->
-                <div class="service-showcase trauma-showcase" data-service="trauma-healing">
-                    <div class="heart-stage">
-                        <div class="heart-svg-wrap">
-                            <svg viewBox="0 0 130 120" width="130" height="120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path class="heart-main" d="M65 105 C65 105 15 72 15 42 C15 24 28 12 42 12 C52 12 60 18 65 25 C70 18 78 12 88 12 C102 12 115 24 115 42 C115 72 65 105 65 105Z"/>
-                                <path class="heart-crack" d="M60 30 L68 45 L58 55 L66 70 L60 82"/>
-                                <path class="heart-glow-path" d="M55 28 C60 36 70 42 62 56 C56 65 65 75 62 85"/>
-                            </svg>
-                            <span class="heart-label">Healing begins here</span>
-                        </div>
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Trauma Healing</h3>
-                        <p>Release deep-seated wounds and reclaim your inner peace through gentle, evidence-informed support.</p>
-                    </div>
-                    <a href="services/trauma-healing.html" class="showcase-link">
-                        Learn More
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-                <!-- 4. PARENTING GUIDANCE — Open book -->
-                <div class="service-showcase parenting-showcase" data-service="parenting-guidance">
-                    <div class="book-stage">
-                        <div class="book-wrap" aria-hidden="true">
-                            <div class="book-page">
-                                <div class="page-lines">
-                                    <div class="page-line"></div><div class="page-line"></div>
-                                    <div class="page-line"></div><div class="page-line"></div>
-                                    <div class="page-line"></div>
-                                </div>
-                                <span class="page-icon">🌱</span>
-                            </div>
-                            <div class="book-spine"></div>
-                            <div class="book-page right-page">
-                                <div class="page-lines">
-                                    <div class="page-line"></div><div class="page-line"></div>
-                                    <div class="page-line"></div><div class="page-line"></div>
-                                    <div class="page-line"></div>
-                                </div>
-                                <span class="page-icon">🤝</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Parenting Guidance</h3>
-                        <p>Navigate the complexities of parenthood with expert, compassionate guidance.</p>
-                    </div>
-                    <a href="services/parenting-guidance.html" class="showcase-link">
-                        Learn More
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-                <!-- 5. CAREER COUNSELLING — Spinning compass -->
-                <div class="service-showcase career-showcase" data-service="career-counselling">
-                    <div class="compass-stage">
-                        <div class="compass-wrap" aria-hidden="true">
-                            <div class="compass-ring">
-                                <div class="compass-directions">
-                                    <span class="compass-dir north">▲</span>
-                                    <span class="compass-dir south">S</span>
-                                    <span class="compass-dir east">E</span>
-                                    <span class="compass-dir west">W</span>
-                                </div>
-                                <div class="compass-needle-group">
-                                    <div class="compass-needle">
-                                        <div class="needle-n"></div>
-                                        <div class="needle-s"></div>
-                                    </div>
-                                    <div class="compass-center-dot"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Career Counselling</h3>
-                        <p>Find your true professional calling and align your work with your inner purpose.</p>
-                    </div>
-                    <a href="services/career-counselling.html" class="showcase-link">
-                        Learn More
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-                <!-- 6. HOLISTIC WELLNESS — Venn circles -->
-                <div class="service-showcase wellness-showcase" data-service="holistic-wellness">
-                    <div class="venn-stage">
-                        <div class="venn-wrap" aria-hidden="true">
-                            <div class="venn-circle venn-mind"><span class="circle-label">Mind</span></div>
-                            <div class="venn-circle venn-body"><span class="circle-label">Body</span></div>
-                            <div class="venn-circle venn-spirit"><span class="circle-label">Spirit</span></div>
-                            <div class="venn-center-glow"></div>
-                            <div class="venn-center-text"><span>Whole</span><span>Being</span></div>
-                        </div>
-                    </div>
-                    <div class="showcase-info">
-                        <h3>Holistic Wellness</h3>
-                        <p>An integrative approach that treats mind, body, and spirit as one unified whole.</p>
-                    </div>
-                    <a href="services/holistic-wellness.html" class="showcase-link">
-                        Learn More
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                </div>
-
-            </div><!-- /.services-showcase -->
-
-            <div style="text-align:center; margin-top:40px;">
-                <a href="services.html" class="btn btn-secondary magnetic">Explore All Services</a>
+                <p class="section-subtitle reveal-up">Each healing modality is structured to speak for itself. Scroll to explore and find the journey that aligns with you.</p>
             </div>
         </div>
     </section>
 
-    <script>
-        // Mobile tap-to-flip for homepage tarot cards
-        document.querySelectorAll('.tarot-flip-card').forEach(card => {
-            card.addEventListener('click', () => card.classList.toggle('flipped'));
-        });
-    </script>
-
-
-    <!-- ========== INTERACTIVE TAROT SECTION ========== -->
-    <section class="tarot-interactive section" id="tarot-reading">
-        <div class="tarot-bg-glow"></div>
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label reveal-text">Interactive Experience</span>
-                <h2 class="section-title split-words">Card as <em>Mirror</em></h2>
-                <p class="section-subtitle reveal-up">Reflection, not prediction. Focus on a question, choose a card, and explore its meaning for your life.</p>
-            </div>
-            
-            <div class="tarot-cards-container">
-                <!-- Card 1: The Star -->
-                <div class="tarot-card-wrapper reveal-up" data-card="star">
-                    <div class="tarot-card magnetic">
-                        <div class="tarot-card-inner">
-                            <div class="tarot-card-front">
-                                <img src="img/tarot_card_back.png" alt="Tarot Card Back">
-                            </div>
-                            <div class="tarot-card-back">
-                                <img src="img/tarot_star.png" alt="The Star">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="card-hint">The Star</span>
-                </div>
-
-                <!-- Card 2: The Sun -->
-                <div class="tarot-card-wrapper reveal-up" data-card="sun">
-                    <div class="tarot-card magnetic">
-                        <div class="tarot-card-inner">
-                            <div class="tarot-card-front">
-                                <img src="img/tarot_card_back.png" alt="Tarot Card Back">
-                            </div>
-                            <div class="tarot-card-back">
-                                <img src="img/tarot_sun.png" alt="The Sun">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="card-hint">The Sun</span>
-                </div>
-
-                <!-- Card 3: The Empress -->
-                <div class="tarot-card-wrapper reveal-up" data-card="empress">
-                    <div class="tarot-card magnetic">
-                        <div class="tarot-card-inner">
-                            <div class="tarot-card-front">
-                                <img src="img/tarot_card_back.png" alt="Tarot Card Back">
-                            </div>
-                            <div class="tarot-card-back">
-                                <img src="img/tarot_empress.png" alt="The Empress">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="card-hint">The Empress</span>
+    <!-- 1. TAROT READING SECTION -->
+    <section class="service-detail-section theme-midnight" id="service-tarot-reading" data-service="tarot-reading">
+        <div class="container service-detail-grid">
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">01 · Guidance</span>
+                <h2 class="service-section-title split-words">Tarot <em>Reading</em></h2>
+                <p class="service-description reveal-up">A reflective mirror for patterns and possibilities already within you — not fortune-telling. Hold a question in your mind, select a card, and explore its meaning.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/tarot-reading.html" class="btn btn-secondary magnetic">Learn More</a>
                 </div>
             </div>
+            <div class="service-detail-visual reveal-up">
+                <div class="tarot-interactive-box">
+                    <p class="tarot-hint">✦ Focus on a question, then select a card to reveal its reflection</p>
+                    <div class="tarot-cards-container">
+                        <!-- Card 1: The Star -->
+                        <div class="tarot-card-wrapper" data-card="star">
+                            <div class="tarot-card magnetic">
+                                <div class="tarot-card-inner">
+                                    <div class="tarot-card-front">
+                                        <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                    </div>
+                                    <div class="tarot-card-back">
+                                        <img src="img/tarot_star.png" alt="The Star">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="card-hint">The Star</span>
+                        </div>
 
-            <!-- Reading Reveal Area -->
-            <div class="tarot-reading-reveal" id="tarotReveal">
-                <div class="reading-content-box">
-                    <h3 class="reading-card-title" id="readingTitle">Choose a card to begin your reading</h3>
-                    <p class="reading-card-text" id="readingText">Take a deep breath. Hold a question in your mind. Choose the card you feel drawn to.</p>
+                        <!-- Card 2: The Sun -->
+                        <div class="tarot-card-wrapper" data-card="sun">
+                            <div class="tarot-card magnetic">
+                                <div class="tarot-card-inner">
+                                    <div class="tarot-card-front">
+                                        <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                    </div>
+                                    <div class="tarot-card-back">
+                                        <img src="img/tarot_sun.png" alt="The Sun">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="card-hint">The Sun</span>
+                        </div>
+
+                        <!-- Card 3: The Empress -->
+                        <div class="tarot-card-wrapper" data-card="empress">
+                            <div class="tarot-card magnetic">
+                                <div class="tarot-card-inner">
+                                    <div class="tarot-card-front">
+                                        <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                    </div>
+                                    <div class="tarot-card-back">
+                                        <img src="img/tarot_empress.png" alt="The Empress">
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="card-hint">The Empress</span>
+                        </div>
+                    </div>
+
+                    <!-- Reading Reveal Area -->
+                    <div class="tarot-reading-reveal" id="tarotReveal">
+                        <div class="reading-content-box">
+                            <h3 class="reading-card-title" id="readingTitle">Choose a card to begin your reading</h3>
+                            <p class="reading-card-text" id="readingText">Take a deep breath. Hold a question in your mind. Choose the card you feel drawn to.</p>
+                        </div>
+                        <div class="tarot-journal-prompt" id="tarotJournalPrompt" style="display:none;">
+                            <label for="tarotJournal">Reflection prompt:</label>
+                            <p id="tarotPromptText" style="color:var(--text-light);margin-bottom:8px;"></p>
+                            <textarea id="tarotJournal" placeholder="Write your thoughts here (saved locally in your browser)..."></textarea>
+                        </div>
+                    </div>
                 </div>
-                <div class="tarot-journal-prompt" id="tarotJournalPrompt" style="display:none;">
-                    <label for="tarotJournal">Reflection prompt:</label>
-                    <p id="tarotPromptText" style="color:var(--text-light);margin-bottom:8px;"></p>
-                    <textarea id="tarotJournal" placeholder="Write your thoughts here (saved locally in your browser)..."></textarea>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CHILD HEALING SECTION -->
+    <section class="service-detail-section alt-layout theme-lavender" id="service-child-healing" data-service="child-healing">
+        <div class="container service-detail-grid">
+            <div class="service-detail-visual reveal-up">
+                <div class="child-scene-wrapper upscaled">
+                    <img class="child-scene-img" src="img/service_child_healing_scene.png" alt="A warm counseling scene between a therapist and a child">
+                    <div class="speech-bubble bubble-counselor">"Let's explore this together, at your pace."</div>
+                    <div class="speech-bubble bubble-child">"I feel safe here."</div>
+                </div>
+            </div>
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">02 · Creative Therapy</span>
+                <h2 class="service-section-title split-words">Child <em>Healing</em></h2>
+                <p class="service-description reveal-up">A nurturing space where young minds can express, process, and grow. Through gentle guidance, creative play, and safe interaction, we help children navigate big emotions and thrive.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/child-healing.html" class="btn btn-secondary magnetic">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TRAUMA HEALING SECTION -->
+    <section class="service-detail-section theme-dusk" id="service-trauma-healing" data-service="trauma-healing">
+        <div class="container service-detail-grid">
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">03 · Release</span>
+                <h2 class="service-section-title split-words">Trauma <em>Healing</em></h2>
+                <p class="service-description reveal-up">Release deep-seated wounds and reclaim your inner peace. Our evidence-informed support helps you release tension, heal past traumas, and step into a calmer tomorrow.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/trauma-healing.html" class="btn btn-secondary magnetic">Learn More</a>
+                </div>
+            </div>
+            <div class="service-detail-visual reveal-up">
+                <div class="heart-stage upscaled">
+                    <div class="heart-svg-wrap">
+                        <svg viewBox="0 0 130 120" width="160" height="150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path class="heart-main" d="M65 105 C65 105 15 72 15 42 C15 24 28 12 42 12 C52 12 60 18 65 25 C70 18 78 12 88 12 C102 12 115 24 115 42 C115 72 65 105 65 105Z"/>
+                            <path class="heart-crack" d="M60 30 L68 45 L58 55 L66 70 L60 82"/>
+                            <path class="heart-glow-path" d="M55 28 C60 36 70 42 62 56 C56 65 65 75 62 85"/>
+                        </svg>
+                        <span class="heart-label">Healing begins here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PARENTING GUIDANCE SECTION -->
+    <section class="service-detail-section alt-layout theme-lavender" id="service-parenting-guidance" data-service="parenting-guidance">
+        <div class="container service-detail-grid">
+            <div class="service-detail-visual reveal-up">
+                <div class="book-stage upscaled">
+                    <div class="book-wrap" aria-hidden="true">
+                        <div class="book-page">
+                            <div class="page-lines">
+                                <div class="page-line"></div><div class="page-line"></div>
+                                <div class="page-line"></div><div class="page-line"></div>
+                                <div class="page-line"></div>
+                            </div>
+                            <span class="page-icon">🌱</span>
+                        </div>
+                        <div class="book-spine"></div>
+                        <div class="book-page right-page">
+                            <div class="page-lines">
+                                <div class="page-line"></div><div class="page-line"></div>
+                                <div class="page-line"></div><div class="page-line"></div>
+                                <div class="page-line"></div>
+                            </div>
+                            <span class="page-icon">🤝</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">04 · Support</span>
+                <h2 class="service-section-title split-words">Parenting <em>Guidance</em></h2>
+                <p class="service-description reveal-up">Navigate the beautiful complexities of parenthood. Build stronger connections, resolve conflicts, and learn supportive communication styles tailored for your family's needs.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/parenting-guidance.html" class="btn btn-secondary magnetic">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CAREER COUNSELLING SECTION -->
+    <section class="service-detail-section theme-lavender" id="service-career-counselling" data-service="career-counselling">
+        <div class="container service-detail-grid">
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">05 · Purpose</span>
+                <h2 class="service-section-title split-words">Career <em>Counselling</em></h2>
+                <p class="service-description reveal-up">Find your true professional calling. Align your work with your inner purpose, navigate major career crossroads, and unlock a more fulfilling path forward.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/career-counselling.html" class="btn btn-secondary magnetic">Learn More</a>
+                </div>
+            </div>
+            <div class="service-detail-visual reveal-up">
+                <div class="compass-stage upscaled">
+                    <div class="compass-wrap" aria-hidden="true">
+                        <div class="compass-ring">
+                            <div class="compass-directions">
+                                <span class="compass-dir north">▲</span>
+                                <span class="compass-dir south">S</span>
+                                <span class="compass-dir east">E</span>
+                                <span class="compass-dir west">W</span>
+                            </div>
+                            <div class="compass-needle-group">
+                                <div class="compass-needle">
+                                    <div class="needle-n"></div>
+                                    <div class="needle-s"></div>
+                                </div>
+                                <div class="compass-center-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. HOLISTIC WELLNESS SECTION -->
+    <section class="service-detail-section alt-layout theme-sage" id="service-holistic-wellness" data-service="holistic-wellness">
+        <div class="container service-detail-grid">
+            <div class="service-detail-visual reveal-up">
+                <div class="venn-stage upscaled">
+                    <div class="venn-wrap" aria-hidden="true">
+                        <div class="venn-circle venn-mind"><span class="circle-label">Mind</span></div>
+                        <div class="venn-circle venn-body"><span class="circle-label">Body</span></div>
+                        <div class="venn-circle venn-spirit"><span class="circle-label">Spirit</span></div>
+                        <div class="venn-center-glow"></div>
+                        <div class="venn-center-text"><span>Whole</span><span>Being</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-detail-text">
+                <span class="section-label reveal-text">06 · Integration</span>
+                <h2 class="service-section-title split-words">Holistic <em>Wellness</em></h2>
+                <p class="service-description reveal-up">An integrative approach that treats mind, body, and spirit as one unified whole. Nurture balance and restore harmony to help you live a fully integrated life.</p>
+                <div class="service-actions reveal-up">
+                    <a href="services/holistic-wellness.html" class="btn btn-secondary magnetic">Learn More</a>
                 </div>
             </div>
         </div>
