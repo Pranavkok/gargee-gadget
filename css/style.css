@@ -226,15 +226,15 @@ ul {
     right: 0;
     z-index: 1000;
     padding: 20px 0;
-    transition: all var(--transition);
+    transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
 }
 
 .navbar.scrolled {
-    background: rgba(250, 246, 255, 0.9);
+    background: var(--bg-nav, rgba(250, 246, 255, 0.95));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 12px 0;
-    box-shadow: 0 2px 20px rgba(91, 58, 122, 0.08);
+    box-shadow: 0 4px 20px var(--shadow-nav, rgba(91, 58, 122, 0.05));
 }
 
 .nav-container {
@@ -250,7 +250,8 @@ ul {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--logo-color, var(--secondary));
+    transition: color 0.5s ease;
 }
 
 .nav-links {
@@ -262,8 +263,8 @@ ul {
 .nav-links a {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--text);
-    position: relative;
+    color: var(--nav-link-color, var(--text));
+    transition: color 0.5s ease;
 }
 
 /* Hover text effect for nav */
@@ -398,11 +399,12 @@ ul {
 .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     overflow: hidden;
-    padding: 120px 0 80px;
+    padding: 120px 0 0;
     background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 50%, #E8D5F5 100%);
 }
 
@@ -495,11 +497,24 @@ ul {
     opacity: 0.06;
 }
 
+.hero-badge-container {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: none;
+}
+
 .hero-content {
     text-align: center;
     position: relative;
     z-index: 2;
     max-width: 800px;
+    margin: 10px 0 auto 0; /* vertical alignment shifted up to give breathing space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-badge {
@@ -512,7 +527,6 @@ ul {
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 24px;
     border: 1px solid rgba(155, 123, 191, 0.2);
 }
 
@@ -524,6 +538,8 @@ ul {
     color: var(--text);
     margin-bottom: 24px;
     overflow: hidden;
+    position: relative;
+    z-index: 2;
 }
 
 .title-line {
@@ -543,43 +559,82 @@ ul {
     font-size: 1.1rem;
     color: var(--text-light);
     max-width: 600px;
-    margin: 0 auto 40px;
+    margin: 0 auto 16px;
     line-height: 1.8;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.hero-scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-light);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    position: relative;
     z-index: 2;
 }
 
-.scroll-line {
-    width: 1px;
-    height: 40px;
-    background: var(--primary-dark);
-    animation: scrollPulse 2s ease-in-out infinite;
+/* Centered Meditating Figure & Aura styling */
+.hero-meditating-art {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -42%);
+    width: 100%;
+    max-width: 480px;
+    height: 480px;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
 }
 
-@keyframes scrollPulse {
-    0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
-    50% { transform: scaleY(1); opacity: 1; }
+.meditating-aura-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: visible;
+}
+
+.meditating-png {
+    position: relative;
+    z-index: 1;
+    width: auto;
+    height: 80%; /* fits elegantly in the aura circles */
+    max-width: 100%;
+    object-fit: contain;
+    animation: floatCalmly 8s ease-in-out infinite alternate;
+    filter: drop-shadow(0 15px 35px rgba(155, 123, 191, 0.22));
+    will-change: transform;
+}
+
+@keyframes floatCalmly {
+    0% { transform: translateY(-12px); }
+    100% { transform: translateY(12px); }
+}
+
+/* Aura Breathing Animation */
+.aura-ring {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 1;
+    opacity: 0.15;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+.aura-ring-1 {
+    animation: auraPulse 6s ease-in-out infinite;
+}
+
+.aura-ring-2 {
+    animation: auraPulse 6s ease-in-out infinite 2s;
+}
+
+.aura-ring-3 {
+    animation: auraPulse 6s ease-in-out infinite 4s;
+}
+
+@keyframes auraPulse {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { opacity: 0.25; }
+    100% { transform: scale(1.3); opacity: 0; }
 }
 
 /* ========== MARQUEE ========== */
@@ -757,34 +812,10 @@ ul {
     overflow: hidden;
 }
 
-.steps-grid {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    padding: 20px 0 40px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--bg-alt);
-}
-
-.steps-grid::-webkit-scrollbar {
-    height: 8px;
-}
-
-.steps-grid::-webkit-scrollbar-track {
-    background: var(--bg-alt);
-    border-radius: 4px;
-}
-
-.steps-grid::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 4px;
-}
-
-.steps-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+/* Steps Stack Container */
+.steps-stack-container {
+    width: 100%;
+    margin: 20px auto 0;
 }
 
 .step-card {
@@ -795,16 +826,66 @@ ul {
     box-shadow: var(--shadow);
     transition: all var(--transition);
     border: 1px solid rgba(195, 166, 216, 0.15);
-    min-width: 320px;
-    max-width: 380px;
-    flex-shrink: 0;
-    scroll-snap-align: center;
+}
+
+@media (min-width: 769px) {
+    #steps {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .steps-stack-container {
+        position: relative;
+        max-width: 580px;
+        height: 380px;
+        margin-top: 40px;
+    }
+    .steps-stack-container .step-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        max-width: none;
+    }
+    .steps-stack-container .step-arrow {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .steps-stack-container {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding: 20px 0 40px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .steps-stack-container::-webkit-scrollbar {
+        display: none;
+    }
+    .steps-stack-container .step-card {
+        min-width: 300px;
+        max-width: 340px;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
 }
 
 .step-card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .step-card:hover {
+        transform: translateY(-4px);
+    }
 }
 
 .step-icon {
@@ -1431,7 +1512,7 @@ ul {
     }
 
     .hero {
-        padding: 140px 0 80px;
+        padding: 140px 0 0;
         min-height: auto;
     }
 
@@ -1573,11 +1654,21 @@ body {
 }
 body.theme-lavender {
     background-color: var(--bg);
+    --bg-nav: rgba(250, 246, 255, 0.95);
+    --shadow-nav: rgba(91, 58, 122, 0.05);
+    --logo-color: var(--secondary);
+    --nav-link-color: var(--text);
+    --border-nav: rgba(155, 123, 191, 0.15);
 }
 
 body.theme-midnight {
     background-color: #170d22; /* Serene healing darkness */
     color: #f3ebfc;
+    --bg-nav: rgba(23, 13, 34, 0.95);
+    --shadow-nav: rgba(0, 0, 0, 0.2);
+    --logo-color: var(--primary);
+    --nav-link-color: #f3ebfc;
+    --border-nav: rgba(195, 166, 216, 0.15);
 }
 body.theme-midnight .section-title, 
 body.theme-midnight .section-subtitle,
@@ -1609,34 +1700,80 @@ body.theme-midnight .logo-text {
 body.theme-midnight .nav-links a {
     color: #f3ebfc;
 }
+
+body.theme-dusk {
+    background-color: #fff5f7;
+    color: #5a2c3a;
+    --bg-nav: rgba(255, 245, 247, 0.95);
+    --shadow-nav: rgba(219, 112, 147, 0.1);
+    --logo-color: #a34864;
+    --nav-link-color: #5a2c3a;
+    --border-nav: rgba(219, 112, 147, 0.15);
+}
+body.theme-dusk .section-title,
+body.theme-dusk .service-section-title,
+body.theme-dusk .step-card h3,
+body.theme-dusk .about-text h2,
+body.theme-dusk .testimonial-author strong {
+    color: #5a2c3a;
+}
+body.theme-dusk .section-subtitle,
+body.theme-dusk .service-description,
+body.theme-dusk .step-card p,
+body.theme-dusk .about-text p,
+body.theme-dusk .testimonial-text {
+    color: #8c5d6d;
+}
+
 body.theme-sage {
     background-color: #EDF3F0; /* Soft natural sage healing */
+    --bg-nav: rgba(244, 247, 242, 0.95);
+    --shadow-nav: rgba(130, 190, 150, 0.1);
+    --logo-color: #2a3d2a;
+    --nav-link-color: #2a3d2a;
+    --border-nav: rgba(130, 190, 150, 0.15);
 }
 
 /* 2. Daily Affirmation Card */
 .affirmation-container {
-    margin: 32px auto 40px;
-    max-width: 580px;
+    margin: 0;
+    width: 100%;
+    max-width: none;
     display: flex;
     justify-content: center;
     position: relative;
     z-index: 3;
 }
 .affirmation-card {
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(155, 123, 191, 0.25);
-    border-radius: var(--radius);
-    padding: 24px 32px;
+    border-top: 1px solid rgba(155, 123, 191, 0.2);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 20px 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 20px;
     text-align: center;
-    box-shadow: var(--shadow);
-    position: relative;
     width: 100%;
+    cursor: pointer;
+    transition: background var(--transition);
+    position: relative;
+}
+.affirmation-card:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+body.theme-midnight .affirmation-card {
+    background: rgba(26, 20, 37, 0.4);
+    border-top-color: rgba(195, 166, 216, 0.15);
+}
+body.theme-midnight .affirmation-card:hover {
+    background: rgba(26, 20, 37, 0.55);
 }
 .affirmation-label {
     font-size: 0.75rem;
@@ -1644,6 +1781,20 @@ body.theme-sage {
     letter-spacing: 1.5px;
     color: var(--primary-dark);
     font-weight: 600;
+    flex-shrink: 0;
+}
+@media (min-width: 769px) {
+    .affirmation-label {
+        position: absolute;
+        left: 32px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-bottom: 0;
+    }
+    .affirmation-text {
+        max-width: 60%;
+        margin: 0 auto;
+    }
 }
 .affirmation-text {
     font-family: var(--font-heading);
@@ -1651,30 +1802,18 @@ body.theme-sage {
     font-style: italic;
     color: var(--secondary);
     line-height: 1.6;
+    margin: 0;
 }
 body.theme-midnight .affirmation-text {
     color: var(--primary);
 }
 
-.affirmation-refresh-btn {
-    background: var(--white);
-    border: 1px solid rgba(155, 123, 191, 0.2);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--secondary);
-    transition: all var(--transition);
-    box-shadow: 0 2px 8px rgba(91, 58, 122, 0.1);
-    outline: none;
-}
-.affirmation-refresh-btn:hover {
-    background: var(--secondary);
-    color: var(--white);
-    transform: rotate(180deg);
+@media (max-width: 768px) {
+    .affirmation-card {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px 24px;
+    }
 }
 
 /* About profile image styling */
