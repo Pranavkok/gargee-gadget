@@ -45,7 +45,7 @@
     position: relative;
     overflow: hidden;
 }
-.page-hero.compact { padding: 140px 0 60px; }
+.page-hero.compact { padding: 120px 0 60px; }
 .page-hero .section-title { margin-bottom: 16px; }
 .page-hero .section-subtitle { margin: 0 auto; }
 
@@ -711,15 +711,16 @@ body.theme-midnight .venn-details-box {
     background: var(--white);
     border: 1px solid rgba(195, 166, 216, 0.2);
     box-shadow: var(--shadow);
-    transition: box-shadow var(--transition), border-color var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     min-height: 340px;
     display: flex;
     flex-direction: column;
 }
 
 .service-showcase:hover {
-    box-shadow: var(--shadow-hover);
-    border-color: rgba(155, 123, 191, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(91, 58, 122, 0.12);
+    border-color: var(--secondary);
 }
 
 /* Service showcase footer link */
