@@ -45,7 +45,7 @@
     position: relative;
     overflow: hidden;
 }
-.page-hero.compact { padding: 120px 0 60px; }
+.page-hero.compact { padding: 80px 0 50px; }
 .page-hero .section-title { margin-bottom: 16px; }
 .page-hero .section-subtitle { margin: 0 auto; }
 
@@ -218,7 +218,6 @@
 }
 
 @media (max-width: 768px) {
-    .two-col-grid { grid-template-columns: 1fr; gap: 40px; }
     .booking-steps { grid-template-columns: 1fr; }
     .path-finder { padding: 32px 24px; }
     .mood-modal { padding: 32px 24px; }
@@ -399,7 +398,7 @@ body.theme-midnight textarea:focus, body.theme-midnight input:focus, body.theme-
     width: 100%;
 }
 
-/* Upscaled Tarot Interactive in section */
+/* Tarot Interactive Box — homepage service section */
 .tarot-interactive-box {
     width: 100%;
     max-width: 580px;
@@ -412,71 +411,166 @@ body.theme-midnight textarea:focus, body.theme-midnight input:focus, body.theme-
     -webkit-backdrop-filter: blur(20px);
 }
 
+/* Card container — 3-column grid for horizontal layout */
 .tarot-interactive-box .tarot-cards-container {
     position: relative;
-    height: 250px;
     width: 100%;
-    max-width: 500px;
     margin: 20px auto 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    justify-items: center;
+    perspective: 1200px;
+    height: auto;
+    min-height: 245px;
 }
 
+/* Each card wrapper — normal flow in the grid */
 .tarot-interactive-box .tarot-card-wrapper {
-    position: absolute !important;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, z-index 0.3s;
-    transform-origin: bottom center;
-    bottom: 20px;
+    position: relative !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    bottom: 0 !important;
+    transform: none !important;
+    transition: transform 0.4s ease;
 }
 
+/* Card element — handles the 3D flip */
 .tarot-interactive-box .tarot-card {
     width: 120px;
     height: 185px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
 }
 
-/* Default Stack Position (Spread slightly and offset so side cards peek out clearly) */
-.tarot-interactive-box .tarot-card-wrapper[data-card="star"] {
-    transform: rotate(-10deg) translateX(-45px) translateY(0);
-    z-index: 3;
-}
-.tarot-interactive-box .tarot-card-wrapper[data-card="sun"] {
-    transform: rotate(0deg) translateY(-10px);
-    z-index: 4;
-}
-.tarot-interactive-box .tarot-card-wrapper[data-card="empress"] {
-    transform: rotate(10deg) translateX(45px) translateY(0);
-    z-index: 3;
+/* Card hover lift - overrides general style.css hover */
+.tarot-interactive-box .tarot-card-wrapper:hover .tarot-card {
+    transform: translateY(-8px) scale(1.03) !important;
 }
 
-/* Fan Out on Hover (Spanned widely elastically) */
-.tarot-interactive-box .tarot-cards-container:not(.has-selected):hover .tarot-card-wrapper[data-card="star"] {
-    transform: rotate(-18deg) translateX(-150px) translateY(-15px);
-    z-index: 5;
-}
-.tarot-interactive-box .tarot-cards-container:not(.has-selected):hover .tarot-card-wrapper[data-card="sun"] {
-    transform: rotate(0deg) translateY(-30px);
-    z-index: 6;
-}
-.tarot-interactive-box .tarot-cards-container:not(.has-selected):hover .tarot-card-wrapper[data-card="empress"] {
-    transform: rotate(18deg) translateX(150px) translateY(-15px);
-    z-index: 5;
+/* 3D flip on card hover or flipped class */
+.tarot-interactive-box .tarot-card-wrapper:hover .tarot-card-inner,
+.tarot-interactive-box .tarot-card-wrapper.flipped .tarot-card-inner {
+    transform: rotateY(180deg) !important;
 }
 
-/* Selected Card Styling */
-.tarot-interactive-box .tarot-cards-container.has-selected .tarot-card-wrapper {
-    opacity: 0.15;
-    pointer-events: none;
-    transform: scale(0.8) rotate(0deg) translate(0, 0);
-    z-index: 1;
+@media (max-width: 480px) {
+    .tarot-interactive-box {
+        padding: 16px;
+    }
+    .tarot-interactive-box .tarot-cards-container {
+        gap: 10px;
+        min-height: 195px;
+    }
+    .tarot-interactive-box .tarot-card {
+        width: 85px;
+        height: 130px;
+    }
+    .tarot-interactive-box .tarot-card-wrapper {
+        gap: 8px;
+    }
+
+    /* Mobile speech bubble scaling to prevent overlaps */
+    .child-scene-wrapper.upscaled .speech-bubble {
+        font-size: 0.75rem !important;
+        padding: 8px 12px !important;
+        max-width: 120px !important;
+    }
+    .child-scene-wrapper.upscaled .bubble-child {
+        left: 8px !important;
+        top: 40% !important;
+    }
+    .child-scene-wrapper.upscaled .bubble-counselor {
+        right: 8px !important;
+        top: 12px !important;
+    }
+
+    /* Mobile Parenting Book scaling */
+    .book-stage.upscaled {
+        height: 240px;
+    }
+    .book-stage.upscaled .book-wrap {
+        width: 240px;
+        height: 160px;
+    }
+    .book-stage.upscaled .book-page {
+        padding: 10px 12px;
+    }
+    .book-stage.upscaled .book-page-content strong {
+        font-size: 0.8rem;
+    }
+    .book-stage.upscaled .book-page-content p {
+        font-size: 0.65rem;
+    }
+    .book-stage.upscaled .book-hint {
+        bottom: 4px !important;
+        font-size: 0.75rem;
+    }
+
+    /* Mobile Holistic Wellness Venn diagram scaling */
+    .venn-stage.upscaled {
+        height: 250px;
+    }
+    .venn-stage.upscaled .venn-wrap {
+        width: 250px;
+        height: 160px;
+    }
+    .venn-stage.upscaled .venn-circle {
+        width: 110px;
+        height: 110px;
+        font-size: 0.75rem;
+    }
+    .venn-stage.upscaled:hover .venn-mind {
+        left: 20px !important;
+    }
+    .venn-stage.upscaled:hover .venn-spirit {
+        right: 20px !important;
+    }
+    .venn-stage.upscaled .venn-center-text {
+        font-size: 0.75rem;
+    }
+    .venn-details-box {
+        font-size: 0.85rem;
+        padding: 12px 16px;
+    }
+
+    /* Mobile Trauma Heart & Compass scaling */
+    .heart-stage.upscaled {
+        height: 240px;
+    }
+    .compass-stage.upscaled {
+        height: 240px;
+    }
+    .compass-stage.upscaled .compass-wrap,
+    .compass-stage.upscaled .compass-ring {
+        width: 150px;
+        height: 150px;
+    }
+    .compass-stage.upscaled .compass-needle-group {
+        width: 100px;
+        height: 100px;
+    }
+    .compass-stage.upscaled .compass-needle {
+        height: 60px;
+    }
+    .compass-stage.upscaled .needle-n {
+        height: 33px;
+    }
+    .compass-stage.upscaled .needle-s {
+        height: 27px;
+    }
+
+    /* Mobile payment card spacing adjustment */
+    .payment-section {
+        padding: 24px !important;
+    }
 }
 
-.tarot-interactive-box .tarot-cards-container.has-selected .tarot-card-wrapper.selected {
-    opacity: 1;
-    pointer-events: auto;
-    transform: scale(1.15) rotate(0deg) translateY(-40px);
-    z-index: 10;
-}
+
 
 /* Upscaling Child Scene */
 .child-scene-wrapper.upscaled {
@@ -686,6 +780,13 @@ body.theme-midnight .venn-details-box {
 }
 
 @media (max-width: 991px) {
+    .two-col-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .service-sidebar-card {
+        position: static !important;
+    }
     .service-detail-grid,
     #service-tarot-reading .service-detail-grid,
     .service-detail-section.alt-layout .service-detail-grid {
@@ -701,6 +802,14 @@ body.theme-midnight .venn-details-box {
     .service-section-title {
         font-size: 2.4rem;
     }
+}
+
+/* Services showcase grid — 3-column bento layout */
+.services-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 0;
 }
 
 /* Base wrapper for all showcases */
@@ -771,6 +880,7 @@ body.theme-midnight .venn-details-box {
     flex-direction: row;
     align-items: stretch;
     min-height: 380px;
+    grid-column: span 2;
 }
 
 .tarot-showcase .showcase-info h3,
@@ -1378,7 +1488,10 @@ body.theme-midnight .venn-details-box {
    ========================================= */
 .wellness-showcase {
     background: linear-gradient(135deg, #f4fff8 0%, #f0f8ff 50%, #f8f4ff 100%);
-    min-height: 300px;
+    min-height: 280px;
+    grid-column: span 3;
+    flex-direction: row;
+    align-items: center;
 }
 
 .venn-stage {
@@ -1557,6 +1670,10 @@ body.theme-midnight .venn-details-box {
         padding: 0 28px 24px;
         max-width: 100%;
     }
+
+    .wellness-showcase {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 600px) {
@@ -1567,6 +1684,15 @@ body.theme-midnight .venn-details-box {
     .service-showcase[data-service="tarot-reading"],
     .service-showcase[data-service="holistic-wellness"] {
         grid-column: span 1;
+    }
+
+    .tarot-showcase {
+        grid-column: span 1;
+    }
+
+    .wellness-showcase {
+        grid-column: span 1;
+        flex-direction: column;
     }
 
     .wellness-showcase .showcase-info {

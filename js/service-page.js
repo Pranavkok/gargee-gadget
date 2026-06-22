@@ -10,7 +10,7 @@
             <div class="service-detail-visual reveal-up" style="margin-bottom: 40px; width: 100%;">
                 <div class="tarot-interactive-box" style="margin: 0 auto;">
                     <p class="tarot-hint">✦ Focus on a question, then select a card to reveal its reflection</p>
-                    <div class="tarot-cards-container" style="height: 230px;">
+                    <div class="tarot-cards-container">
                         <!-- Card 1: The Star -->
                         <div class="tarot-card-wrapper" data-card="star">
                             <div class="tarot-card magnetic">

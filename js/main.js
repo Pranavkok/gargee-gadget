@@ -369,62 +369,12 @@ document.querySelectorAll('.reveal-up').forEach(el => {
 });
 
 // --- Card reveals using batch (most reliable for fast scrolling) ---
-if (window.innerWidth <= 768) {
-    batchReveal('.step-card', { opacity: 0, y: 80, scale: 0.85, rotate: -2 }, { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 1.1, ease: 'back.out(1.4)', stagger: 0.15 });
-}
+batchReveal('.step-card', { opacity: 0, y: 60, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'back.out(1.4)', stagger: 0.12 });
 batchReveal('.service-card', { opacity: 0, y: 80, scale: 0.85, rotate: 2 }, { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 1.1, ease: 'back.out(1.4)', stagger: 0.12 });
 batchReveal('.testimonial-card', { opacity: 0, y: 60, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: 'back.out(1.2)', stagger: 0.15 });
-batchReveal('.tarot-card-wrapper', { opacity: 0, y: 100, scale: 0.8, rotate: () => gsap.utils.random(-8, 8) }, { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 1.3, ease: 'back.out(1.6)', stagger: 0.18 });
+batchReveal('.tarot-card-wrapper', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1 });
 
-// ========== DESKTOP STEPS PINNING STACK (DESKTOP) ==========
-if (window.innerWidth > 768) {
-    const stepsSection = document.getElementById('steps');
-    const stepsStack = document.getElementById('stepsStack');
-    if (stepsSection && stepsStack) {
-        const cards = gsap.utils.toArray('#stepsStack .step-card');
-        
-        // Setup initial absolute stack coordinates
-        gsap.set(cards[0], { opacity: 1, y: 0, scale: 1, zIndex: 10 });
-        gsap.set(cards.slice(1), { opacity: 0, y: 150, scale: 0.9, zIndex: (i) => 11 + i });
-        
-        const stepsTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '#steps',
-                id: 'stepsScrollTrigger',
-                start: 'top top',
-                end: '+=1500', // scroll height for pinning
-                scrub: 1,
-                pin: true,
-                anticipatePin: 1,
-                onUpdate: (self) => {
-                    const progress = self.progress;
-                    let activeIndex = 0;
-                    if (progress > 0.66) {
-                        activeIndex = 2;
-                    } else if (progress > 0.33) {
-                        activeIndex = 1;
-                    } else {
-                        activeIndex = 0;
-                    }
-                    
-                    const indicatorDots = document.querySelectorAll('#stepsIndicators .step-indicator');
-                    indicatorDots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === activeIndex);
-                    });
-                }
-            }
-        });
-        
-        // Card 1 slides up and overlays Card 0; Card 0 shrinks and fades
-        stepsTl.to(cards[0], { scale: 0.95, opacity: 0.4, y: -20, duration: 1 })
-               .to(cards[1], { opacity: 1, y: 0, scale: 1, duration: 1 }, '<')
-               
-               // Card 2 slides up and overlays Card 1; Card 1 shrinks/fades, Card 0 shrinks/fades more
-               .to(cards[1], { scale: 0.95, opacity: 0.4, y: -20, duration: 1 })
-               .to(cards[0], { scale: 0.9, opacity: 0.1, y: -40, duration: 1 }, '<')
-               .to(cards[2], { opacity: 1, y: 0, scale: 1, duration: 1 }, '<');
-    }
-}
+// Steps section — no pinning, smooth static layout with batch reveal above
 
 // ========== ABOUT SECTION ==========
 
@@ -811,7 +761,9 @@ if (refreshBtn && affirmationText) {
 }
 
 // 3. TAROT CARD INTERACTION
-const tarotCards = document.querySelectorAll('.tarot-card-wrapper');
+// Card flipping is now CSS-driven (hover container fans cards, hover card flips it).
+// JS handles the reading text reveal panel on click.
+const tarotCards = document.querySelectorAll('.tarot-interactive-box .tarot-card-wrapper');
 const tarotReveal = document.getElementById('tarotReveal');
 const readingTitle = document.getElementById('readingTitle');
 const readingText = document.getElementById('readingText');
@@ -825,56 +777,26 @@ const tarotReadings = typeof SITE_CONFIG !== 'undefined' ? SITE_CONFIG.tarotCard
 tarotCards.forEach((cardWrapper) => {
     cardWrapper.addEventListener('click', (e) => {
         e.stopPropagation();
-        const container = cardWrapper.closest('.tarot-cards-container');
         const cardKey = cardWrapper.getAttribute('data-card');
         const reading = tarotReadings[cardKey];
         if (!reading) return;
 
-        // Toggle flip / select
-        if (cardWrapper.classList.contains('selected')) {
-            cardWrapper.classList.remove('selected', 'flipped');
-            container.classList.remove('has-selected');
-            if (tarotReveal) tarotReveal.classList.remove('show');
-        } else {
-            // Remove previous selections
-            container.querySelectorAll('.tarot-card-wrapper').forEach(cw => {
-                cw.classList.remove('selected', 'flipped');
-            });
-            cardWrapper.classList.add('selected');
-            container.classList.add('has-selected');
-            
-            // Flip card after brief delay for sliding animation
-            setTimeout(() => {
-                cardWrapper.classList.add('flipped');
-                if (readingTitle) readingTitle.textContent = reading.title;
-                if (readingText) readingText.textContent = reading.text;
+        // Update the reading reveal text panel
+        if (readingTitle) readingTitle.textContent = reading.title;
+        if (readingText) readingText.textContent = reading.text;
 
-                const promptEl = document.getElementById('tarotJournalPrompt');
-                const promptText = document.getElementById('tarotPromptText');
-                if (promptEl && promptText && reading.prompt) {
-                    promptText.textContent = reading.prompt;
-                    promptEl.style.display = 'block';
-                }
-
-                if (tarotReveal) {
-                    tarotReveal.classList.add('show');
-                }
-            }, 300);
+        const promptEl = document.getElementById('tarotJournalPrompt');
+        const promptText = document.getElementById('tarotPromptText');
+        if (promptEl && promptText && reading.prompt) {
+            promptText.textContent = reading.prompt;
+            promptEl.style.display = 'block';
         }
+
+        if (tarotReveal) tarotReveal.classList.add('show');
     });
 });
 
-// Click outside to reset tarot selection
-document.addEventListener('click', (e) => {
-    const activeContainer = document.querySelector('.tarot-cards-container.has-selected');
-    if (activeContainer && !e.target.closest('.tarot-interactive-box')) {
-        activeContainer.querySelectorAll('.tarot-card-wrapper').forEach(cw => {
-            cw.classList.remove('selected', 'flipped');
-        });
-        activeContainer.classList.remove('has-selected');
-        if (tarotReveal) tarotReveal.classList.remove('show');
-    }
-});
+// (CSS hover handles tarot flip — no click-outside reset needed)
 
 // 3b. CHILD HEALING EMOTION BADGES INTERACTION
 const emotionBtns = document.querySelectorAll('.emotion-badge-btn');
@@ -1181,7 +1103,7 @@ window.addEventListener('load', () => {
     ScrollTrigger.refresh();
 });
 
-// ========== HORIZONTAL STEPS SCROLL & CLICK NAVIGATION ==========
+// ========== HORIZONTAL STEPS SCROLL ==========
 (function initStepsScroll() {
     const stepsStack = document.getElementById('stepsStack');
     const indicators = document.getElementById('stepsIndicators');
@@ -1191,49 +1113,29 @@ window.addEventListener('load', () => {
     const stepCards = stepsStack.querySelectorAll('.step-card');
     const indicatorDots = indicators.querySelectorAll('.step-indicator');
 
-    // Mobile scroll listener (horizontal swipe fallback)
+    // Update active indicator on scroll
     stepsStack.addEventListener('scroll', () => {
-        if (window.innerWidth <= 768 && stepCards.length > 0) {
-            const scrollLeft = stepsStack.scrollLeft;
-            const cardWidth = stepCards[0].offsetWidth;
-            const gap = 24;
-            const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
-            
-            indicatorDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === activeIndex);
-            });
-        }
+        const scrollLeft = stepsStack.scrollLeft;
+        const cardWidth = stepCards[0].offsetWidth;
+        const gap = 32;
+        const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+        
+        indicatorDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === activeIndex);
+        });
     });
 
-    // Unified click handler on indicators
+    // Click on indicator to scroll to that step
     indicatorDots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            if (window.innerWidth > 768) {
-                // Desktop: scroll the page to match active step in pin timeline
-                const scrollTriggerInstance = ScrollTrigger.getById('stepsScrollTrigger');
-                if (scrollTriggerInstance) {
-                    const start = scrollTriggerInstance.start;
-                    const end = scrollTriggerInstance.end;
-                    // Scale scroll based on step index (0, 0.5, 1.0)
-                    const targetScroll = start + (index / (stepCards.length - 1)) * (end - start);
-                    window.scrollTo({
-                        top: targetScroll,
-                        behavior: 'smooth'
-                    });
-                }
-            } else {
-                // Mobile: scroll the horizontal container
-                if (stepCards.length > 0) {
-                    const cardWidth = stepCards[0].offsetWidth;
-                    const gap = 24;
-                    const scrollPosition = index * (cardWidth + gap);
-                    
-                    stepsStack.scrollTo({
-                        left: scrollPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
+            const cardWidth = stepCards[0].offsetWidth;
+            const gap = 32;
+            const scrollPosition = index * (cardWidth + gap);
+            
+            stepsStack.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
         });
     });
 })();
