@@ -1718,3 +1718,546 @@ body.theme-midnight .venn-details-box {
         animation: none !important;
     }
 }
+
+/* =========================================
+   PARENTING LANDING PAGE STYLES
+   ========================================= */
+.announcement-bar {
+    background: var(--secondary);
+    color: var(--white);
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.card-soft {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(195, 166, 216, 0.15);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.card-soft:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 680px;
+    margin: 40px auto 0;
+}
+
+.faq-section {
+    max-width: 760px;
+    margin: 0 auto;
+}
+.faq-accordion {
+    margin-bottom: 16px;
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    border: 1px solid rgba(155, 123, 191, 0.15);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+}
+.faq-accordion:hover {
+    box-shadow: var(--shadow-hover);
+}
+.faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+}
+.faq-trigger span.icon {
+    font-size: 1.2rem;
+    transition: transform var(--transition);
+    color: var(--secondary);
+}
+.faq-accordion.active .faq-trigger span.icon {
+    transform: rotate(45deg);
+}
+.faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 24px;
+}
+.faq-accordion.active .faq-panel {
+    max-height: 250px;
+    padding: 0 24px 20px;
+}
+.faq-panel p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ========================================================
+   ASYMMETRICAL LAYOUT & HIGH-PERFORMANCE REDESIGN
+   ======================================================== */
+
+.parents-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* GPU-Accelerated Left Timeline Indicator */
+.progress-line-container {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 4px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.progress-line-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(155, 123, 191, 0.04);
+}
+.progress-line-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--secondary), var(--primary-dark));
+    transform-origin: top;
+    transform: scaleY(0);
+    will-change: transform;
+    filter: drop-shadow(0 0 6px rgba(155, 123, 191, 0.5));
+}
+body.theme-sage .progress-line-active {
+    background: linear-gradient(to bottom, #4a634e, #2a3d2a);
+    filter: drop-shadow(0 0 6px rgba(130, 190, 150, 0.4));
+}
+
+/* Asymmetrical Hero Split Grid */
+.hero-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 60px;
+    align-items: center;
+    text-align: left;
+}
+.hero-text-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.hero-visual-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.hero-visual-area .image-container {
+    position: relative;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow);
+    padding: 12px;
+    max-width: 380px;
+}
+body.theme-sage .hero-visual-area .image-container {
+    background: rgba(244, 247, 242, 0.5);
+    border-color: rgba(195, 216, 200, 0.6);
+}
+.hero-visual-area img {
+    border-radius: var(--radius-sm);
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.hero-badge-overlay {
+    position: absolute;
+    bottom: -15px;
+    left: -20px;
+    background: var(--white);
+    border: 1px solid rgba(155, 123, 191, 0.25);
+    box-shadow: var(--shadow-hover);
+    padding: 16px 24px;
+    border-radius: var(--radius-sm);
+    z-index: 5;
+}
+body.theme-sage .hero-badge-overlay {
+    border-color: rgba(195, 216, 200, 0.6);
+}
+
+/* Stress Timeline Layout */
+.stress-timeline-container {
+    position: relative;
+}
+.stress-timeline {
+    position: relative;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+.timeline-node {
+    position: absolute;
+    left: 32px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 4px solid var(--secondary);
+    z-index: 2;
+    transform: translateY(8px);
+    transition: border-color 0.4s, background-color 0.4s;
+}
+body.theme-sage .timeline-node {
+    border-color: #4a634e;
+}
+.timeline-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+.timeline-card-number {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: rgba(155, 123, 191, 0.3);
+    line-height: 1;
+}
+body.theme-midnight .timeline-card-number {
+    color: rgba(195, 166, 216, 0.25);
+}
+
+/* Dynamic Glassmorphic struggles card */
+.dark-glass-card {
+    background: rgba(28, 18, 44, 0.45) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35) !important;
+    color: #e3d7f0 !important;
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s;
+}
+.dark-glass-card h3 {
+    font-family: var(--font-heading);
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+}
+.dark-glass-card:hover {
+    border-color: rgba(195, 166, 216, 0.25) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* Pillars of the Blueprint Grid */
+.blueprint-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+.pillar-card {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 10px 32px rgba(91, 58, 122, 0.03) !important;
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s;
+}
+.pillar-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(155, 123, 191, 0.3) !important;
+}
+body.theme-sage .pillar-card {
+    background: rgba(244, 247, 242, 0.5) !important;
+    border-color: rgba(195, 216, 200, 0.6) !important;
+}
+body.theme-sage .pillar-card:hover {
+    border-color: rgba(74, 99, 78, 0.3) !important;
+}
+.pillar-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(155, 123, 191, 0.08);
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+body.theme-sage .pillar-tag {
+    background: rgba(130, 190, 150, 0.15);
+    color: #2a3d2a;
+}
+.pillar-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+/* Outcomes Tarot Flip Cards */
+.tarot-outcome-card {
+    background: transparent;
+    perspective: 1000px;
+    height: 290px;
+    cursor: pointer;
+    width: 100%;
+}
+@media (max-width: 480px) {
+    .tarot-outcome-card {
+        height: 310px;
+    }
+}
+.tarot-outcome-card .tarot-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.tarot-outcome-card .tarot-card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 12px;
+}
+.tarot-outcome-card.flipped .tarot-card-inner {
+    transform: rotateY(180deg);
+}
+.tarot-outcome-card .tarot-card-front, 
+.tarot-outcome-card .tarot-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.tarot-outcome-card .tarot-card-front {
+    border: 2px solid rgba(212, 168, 67, 0.4);
+    background: #1c102a;
+    transition: border-color 0.3s;
+}
+body.theme-sage .tarot-outcome-card .tarot-card-front {
+    border-color: rgba(130, 190, 150, 0.45);
+}
+.tarot-outcome-card .tarot-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.tarot-outcome-card .tarot-card-back {
+    transform: rotateY(180deg);
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(155, 123, 191, 0.2) !important;
+    color: var(--text) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 28px;
+    text-align: left;
+    box-shadow: inset 0 0 40px rgba(155, 123, 191, 0.05);
+}
+body.theme-sage .tarot-outcome-card .tarot-card-back {
+    background: rgba(244, 247, 242, 0.95) !important;
+    border-color: rgba(195, 216, 200, 0.6) !important;
+    color: var(--text) !important;
+}
+.tarot-outcome-card .tarot-card-back p {
+    color: var(--text-light) !important;
+}
+
+/* Minimalist Accordion Rows */
+.faq-row-section {
+    max-width: 800px;
+    margin: 40px auto 0;
+    border-top: 1px solid rgba(155, 123, 191, 0.15);
+}
+body.theme-sage .faq-row-section {
+    border-top-color: rgba(195, 216, 200, 0.5);
+}
+.faq-row {
+    border-bottom: 1px solid rgba(155, 123, 191, 0.15);
+}
+body.theme-sage .faq-row {
+    border-bottom-color: rgba(195, 216, 200, 0.5);
+}
+.faq-row-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    text-align: left;
+    transition: color 0.3s;
+}
+.faq-row-trigger:hover {
+    color: var(--secondary);
+}
+body.theme-sage .faq-row-trigger:hover {
+    color: #4a634e;
+}
+.faq-row-trigger .icon {
+    font-size: 1.4rem;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    color: var(--text-light);
+}
+.faq-row.active .faq-row-trigger .icon {
+    transform: rotate(45deg);
+    color: var(--secondary);
+}
+body.theme-sage .faq-row.active .faq-row-trigger .icon {
+    color: #4a634e;
+}
+.faq-row-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0;
+}
+.faq-row.active .faq-row-panel {
+    padding-bottom: 24px;
+}
+.faq-row-panel p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-light);
+}
+
+/* 3D Perspective card properties */
+.perspective-container {
+    perspective: 1200px;
+}
+.card-3d-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Soft transitions */
+.parent-transition-gradient {
+    height: 180px;
+    background: linear-gradient(180deg, #201338 0%, #311c52 20%, #462c6f 40%, var(--bg) 100%);
+    transition: background 1.2s ease;
+    margin-top: -1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Scroll indicator styling */
+.scroll-prompt-wrapper {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+.scroll-indicator-mouse {
+    width: 22px;
+    height: 38px;
+    border: 2px solid var(--text-light);
+    border-radius: 20px;
+    position: relative;
+}
+.scroll-indicator-wheel {
+    width: 4px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6px;
+    animation: wheel-scroll 1.6s ease infinite;
+}
+@keyframes wheel-scroll {
+    0% { opacity: 0; top: 6px; }
+    30% { opacity: 1; }
+    80% { opacity: 0; top: 18px; }
+    100% { opacity: 0; top: 6px; }
+}
+
+/* Responsive grid overrides */
+@media (max-width: 991px) {
+    .hero-split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    .hero-text-area {
+        align-items: center;
+    }
+    .hero-badge-overlay {
+        position: static;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    .progress-line-container, .timeline-node {
+        display: none !important;
+    }
+    .stress-timeline {
+        padding-left: 0;
+        gap: 32px;
+    }
+    .timeline-card {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .blueprint-pillars {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .scroll-prompt-wrapper {
+        align-items: center;
+        width: 100%;
+    }
+}
+

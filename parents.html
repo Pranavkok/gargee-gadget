@@ -4,64 +4,731 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Parents — Dr. Gargee Gadgil</title>
+    <meta name="description" content="Raise a calm, confident child. Book a free 1:1 discovery call with Dr. Gargee Gadgil and move from daily fights & shouting to mindful, connected parenting.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/features.css">
+    <style>
+        /* Specific inline layout overrides for parenting page */
+        #rootCausesGrid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+        @media (max-width: 991px) {
+            #rootCausesGrid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+        @media (max-width: 600px) {
+            #rootCausesGrid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        @media (max-width: 400px) {
+            #rootCausesGrid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
 </head>
 <body class="theme-sage">
     <div id="site-cursor"></div>
     <div id="site-nav"></div>
 
-    <section class="page-hero compact">
-        <div class="container">
-            <span class="section-label">For Parents</span>
-            <h1 class="section-title">You're Not Alone in This</h1>
-            <p class="section-subtitle">Support for your child — and for you, as a parent doing your best.</p>
+    <div class="parents-wrapper" id="parentsWrapper">
+        <!-- GPU-Accelerated Left Scroll Indicator (Desktop only) -->
+        <div class="progress-line-container">
+            <div class="progress-line-bg"></div>
+            <div id="progressLineActive" class="progress-line-active"></div>
         </div>
-    </section>
 
-    <section class="section">
-        <div class="container content-block">
-            <p>Parenting is one of life's most demanding roles. When your child struggles — with anxiety, anger, withdrawal, or behaviour you don't understand — it can feel lonely and frightening. Dr. Gargee offers a calm, non-judgmental space for both children and parents.</p>
+        <!-- Ambient glows for layout depth -->
+        <div class="ambient-glow" style="position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(155, 123, 191, 0.08) 0%, rgba(255,255,255,0) 70%); filter: blur(50px); top: 8%; left: 5%; pointer-events: none; z-index: 1;"></div>
+        <div class="ambient-glow" style="position: absolute; width: 550px; height: 550px; background: radial-gradient(circle, rgba(130, 190, 150, 0.07) 0%, rgba(255,255,255,0) 70%); filter: blur(75px); top: 40%; right: 4%; pointer-events: none; z-index: 1;"></div>
 
-            <h3>Signs your child may benefit from support</h3>
-            <ul class="content-list">
-                <li>Persistent sadness, worry, or irritability that affects daily life</li>
-                <li>Sudden changes after divorce, loss, relocation, or bullying</li>
-                <li>Difficulty sleeping, eating, or concentrating at school</li>
-                <li>Withdrawal from friends, family, or activities they once enjoyed</li>
-                <li>Outbursts that feel disproportionate or hard to soothe</li>
-            </ul>
-            <p><em>This list is not a diagnosis. If you're unsure, reaching out for a conversation is always okay.</em></p>
+        <!-- Announcement Bar -->
+        <div class="announcement-bar" style="position: relative; z-index: 10;">
+            ⏳ Free 1:1 Discovery Call • Limited Slots This Week
+        </div>
 
-            <h3>What child healing sessions look like</h3>
-            <p>Sessions are age-appropriate, gentle, and paced for the child. Dr. Gargee uses conversation, creative play, and exercises suited to the child's developmental stage. Parents are typically involved in the first meeting and receive guidance on supporting healing at home.</p>
-            <p>Age range: <span class="tbc-badge">TBC — confirm with Dr. Gargee</span></p>
-
-            <h3>Parenting guidance vs. child sessions</h3>
-            <p><strong>Child Healing</strong> focuses on the child's emotional world with the child present. <strong>Parenting Guidance</strong> focuses on you — your strategies, your stress, your relationship with your child. Many families use both over time.</p>
-
-            <h3>Common questions</h3>
-            <div class="content-callout"><p><strong>Will my child need to talk about painful things?</strong> Only at their pace. Dr. Gargee never forces disclosure.</p></div>
-            <div class="content-callout"><p><strong>Are sessions online?</strong> Yes, currently online. <span class="tbc-badge">TBC</span></p></div>
-            <div class="content-callout"><p><strong>Do I stay in the room?</strong> Depends on the child's age and comfort. This is discussed in the first parent conversation.</p></div>
-
-            <div style="text-align:center;margin-top:48px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-                <a href="services/child-healing.html" class="btn btn-secondary">Child Healing</a>
-                <a href="services/parenting-guidance.html" class="btn btn-secondary">Parenting Guidance</a>
-                <a href="contact.html" class="btn btn-primary">Book a Session</a>
+        <!-- Page Hero (Asymmetrical Split Screen) -->
+        <section class="page-hero rollercoaster-section" id="heroSection" style="padding-top: 100px; padding-bottom: 80px; position: relative;">
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="hero-split-grid">
+                    <div class="hero-text-area">
+                        <span class="section-label">Empowered Parent Blueprint</span>
+                        <h1 class="section-title split-words" style="margin-bottom: 20px; line-height: 1.15; font-size: clamp(2.2rem, 4.5vw, 3.2rem);">Say Goodbye to Daily Fights — <span class="title-accent">Raise a Calm Child</span></h1>
+                        <p class="section-subtitle reveal-up" style="font-size: 1.08rem; line-height: 1.75; margin-bottom: 36px; max-width: 580px;">Move from exhausting shouting and screen-time power struggles to mindful, connected parenting without carry-home guilt.</p>
+                        
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="#book-call" class="btn btn-primary btn-cta magnetic">Book My Free Call →</a>
+                            <div class="scroll-prompt-wrapper reveal-up" style="margin-top: 0; display: inline-flex; flex-direction: row; align-items: center; gap: 12px;">
+                                <div class="scroll-indicator-mouse">
+                                    <div class="scroll-indicator-wheel"></div>
+                                </div>
+                                <span style="font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase;">Scroll down to begin</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual-area reveal-up">
+                        <div class="image-container float-slow">
+                            <img src="img/dr_gargee_profile.png" alt="Dr. Gargee Gadgil, Mindful Parenting Coach">
+                            <div class="hero-badge-overlay reveal-up">
+                                <span style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); letter-spacing: 1px; margin-bottom: 4px;">Duration</span>
+                                <strong style="display: block; font-size: 1.1rem; color: var(--secondary);">30 mins Zoom Call</strong>
+                                <strong style="display: block; font-size: 0.9rem; color: #ff8da9; margin-top: 4px;">100% Free</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Struggles Timeline Section (Fades to dark theme on scroll) -->
+        <section class="section rollercoaster-section" id="strugglesSection" style="padding: 120px 0; position: relative;">
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+                    <span class="section-label">Does this sound like your home?</span>
+                    <h2 class="section-title">The Cycle of Daily Stress</h2>
+                </div>
+                
+                <div class="stress-timeline-container">
+                    <div class="stress-timeline">
+                        <!-- Stage 1 -->
+                        <div class="timeline-node" style="top: 0;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="left">
+                            <div class="timeline-card-number">01</div>
+                            <div>
+                                <h3>Studies &amp; Screen Battles</h3>
+                                <p>You and your child fight every single day about homework limits, mobile screens, or daily routines. Every reminder triggers a conflict.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 2 -->
+                        <div class="timeline-node" style="top: 180px;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="right">
+                            <div class="timeline-card-number">02</div>
+                            <div>
+                                <h3>Shouting &amp; Silence</h3>
+                                <p>Every conversation escalates rapidly into shouting matches, angry backtalk, or defensive, stubborn silence where nothing gets resolved.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 3 -->
+                        <div class="timeline-node" style="top: 360px;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="left">
+                            <div class="timeline-card-number">03</div>
+                            <div>
+                                <h3>Exhaustion &amp; Heavy Guilt</h3>
+                                <p>You feel emotionally drained at the end of the day, carrying heavy parenting guilt and regret after losing your temper with your child.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 4 -->
+                        <div class="timeline-node" style="top: 540px;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="right">
+                            <div class="timeline-card-number">04</div>
+                            <div>
+                                <h3>Anxiety &amp; Defiance</h3>
+                                <p>You notice your child becoming anxious, increasingly defiant, or losing academic motivation and pulling away from the family.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 5 -->
+                        <div class="timeline-node" style="top: 720px;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="left">
+                            <div class="timeline-card-number">05</div>
+                            <div>
+                                <h3>Failed Strategies</h3>
+                                <p>You have tried being strict, calling out punishments, and tried being extremely soft — but nothing seems to resolve the issues long-term.</p>
+                            </div>
+                        </div>
+
+                        <!-- Stage 6 -->
+                        <div class="timeline-node" style="top: 900px;"></div>
+                        <div class="timeline-card dark-glass-card" data-slide-from="right">
+                            <div class="timeline-card-number">06</div>
+                            <div>
+                                <h3>Growing Disconnection</h3>
+                                <p>Deep down you desire closeness, but the daily friction is slowly pushing you and your child apart, building emotional distance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transition back to calming theme variables -->
+        <div class="parent-transition-gradient"></div>
+
+        <!-- Why Fights Happen Section -->
+        <section class="section rollercoaster-section" id="whyFightsSection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="max-width: 950px; text-align: center; position: relative; z-index: 2;">
+                <span class="section-label">Root Causes</span>
+                <h2 class="section-title" style="margin-bottom: 16px;">Why do these cycles repeat?</h2>
+                <p style="color: var(--text-light); max-width: 680px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.75;">Parent-child conflicts are rarely just about the studies or chores. They stem from deeper core cycles:</p>
+                
+                <div id="rootCausesGrid" style="margin-bottom: 40px;">
+                    <div class="pillar-card float-slow" style="padding: 20px 12px; display: flex; align-items: center; justify-content: center; min-height: 95px; margin: 0;">
+                        <strong style="font-size: 0.95rem; color: var(--secondary); line-height: 1.4;">Emotional Triggers</strong>
+                    </div>
+                    <div class="pillar-card float-medium" style="padding: 20px 12px; display: flex; align-items: center; justify-content: center; min-height: 95px; margin: 0;">
+                        <strong style="font-size: 0.95rem; color: var(--secondary); line-height: 1.4;">Power Struggles</strong>
+                    </div>
+                    <div class="pillar-card float-slow" style="padding: 20px 12px; display: flex; align-items: center; justify-content: center; min-height: 95px; margin: 0;">
+                        <strong style="font-size: 0.95rem; color: var(--secondary); line-height: 1.4;">Unspoken Hopes</strong>
+                    </div>
+                    <div class="pillar-card float-medium" style="padding: 20px 12px; display: flex; align-items: center; justify-content: center; min-height: 95px; margin: 0;">
+                        <strong style="font-size: 0.95rem; color: var(--secondary); line-height: 1.4;">Reactive Habits</strong>
+                    </div>
+                    <div class="pillar-card float-slow" style="padding: 20px 12px; display: flex; align-items: center; justify-content: center; min-height: 95px; margin: 0;">
+                        <strong style="font-size: 0.95rem; color: var(--secondary); line-height: 1.4;">Disconnection</strong>
+                    </div>
+                </div>
+                
+                <p style="color: var(--text-light); max-width: 760px; margin: 0 auto; line-height: 1.8; font-size: 1.05rem;" class="reveal-up">The <strong>Empowered Parent Blueprint</strong> helps you break triggers and replace reactive patterns with calm boundaries and core connection.</p>
+            </div>
+        </section>
+
+        <!-- Blueprint Pillars (Outcomes Redesign) -->
+        <section class="section rollercoaster-section" id="outcomesSection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-header" style="text-align: center; margin-bottom: 20px;">
+                    <span class="section-label">A Calmer Household</span>
+                    <h2 class="section-title">What becomes possible in your home</h2>
+                </div>
+                
+                <div class="blueprint-pillars">
+                    <!-- Pillar 1 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Communication</span>
+                                    <h3 style="margin-top: 8px;">Calm Conversations</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Replace loud arguments and shouting matches with peaceful, structured talks where your child actually listens.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Focus</span>
+                                    <h3 style="margin-top: 8px;">Stress-Free Studies</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Say goodbye to homework battles. Enable your child to take independent ownership of their learning — willingly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Trust</span>
+                                    <h3 style="margin-top: 8px;">Deeper Connection</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Move from constant micromanaging and correction to a bond built on trust, respect, and emotional warmth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pillar 4 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Mindfulness</span>
+                                    <h3 style="margin-top: 8px;">You, Calmer Too</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Release parenting guilt. Gain simple mindfulness tools to remain stable, composed, and supportive in tense moments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pillar 5 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Growth</span>
+                                    <h3 style="margin-top: 8px;">Resilient Child</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Help your child learn to regulate their own emotions, bounce back from academic setbacks, and grow in confidence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pillar 6 -->
+                    <div class="tarot-outcome-card">
+                        <div class="tarot-card">
+                            <div class="tarot-card-inner">
+                                <div class="tarot-card-front">
+                                    <img src="img/tarot_card_back.png" alt="Tarot Card Back">
+                                </div>
+                                <div class="tarot-card-back">
+                                    <span class="pillar-tag">Harmony</span>
+                                    <h3 style="margin-top: 8px;">A Peaceful Home</h3>
+                                    <p style="margin: 0; color: var(--text-light); font-size: 0.92rem; line-height: 1.55;">Minimize tension under your roof. Open doors for mutual understanding, cooperation, and meaningful shared moments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Urgency & Bio Section -->
+        <section class="section rollercoaster-section" id="urgencySection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="max-width: 950px; position: relative; z-index: 2;">
+                <div class="two-col-grid" style="align-items: center; gap: 60px;">
+                    <div class="pillar-card float-slow" style="padding: 12px; max-width: 400px; margin: 0 auto;">
+                        <img src="img/dr_gargee_counseling.png" alt="Counseling context parent child success" style="max-width: 100%; border-radius: 12px; display: block; object-fit: cover;">
+                    </div>
+                    <div style="text-align: left;" class="reveal-up">
+                        <span class="section-label">A Critical Window</span>
+                        <h2 class="section-title" style="margin-bottom: 24px; font-size: 2rem; line-height: 1.25;">Do not miss this discovery call if:</h2>
+                        
+                        <ul class="content-list" style="margin-bottom: 36px; display: flex; flex-direction: column; gap: 16px;">
+                            <li class="reveal-up">You keep repeating the same exhausting struggles about studies, screen limits, or daily routines.</li>
+                            <li class="reveal-up">Your child is beginning to pull away, shutting down or avoiding sharing details of their life.</li>
+                            <li class="reveal-up">You are concerned that ongoing home friction is silently impacting your child's self-esteem.</li>
+                        </ul>
+                        
+                        <a href="#book-call" class="btn btn-primary magnetic">Request My Free Call →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Walkaways Section -->
+        <section class="section rollercoaster-section" id="walkawaySection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="max-width: 800px; position: relative; z-index: 2;">
+                <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                    <span class="section-label">Your Roadmap</span>
+                    <h2 class="section-title">What you'll walk away with</h2>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="pillar-card reveal-up" style="display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 24px 28px; margin: 0;">
+                        <span style="font-weight: bold; color: var(--secondary); font-size: 1.15rem; line-height: 1; margin-top: 2px;">✓</span>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.95rem; line-height: 1.65;"><strong>True Clarity:</strong> Uncover the real triggers causing arguments and shouting cycles in your household.</p>
+                    </div>
+                    <div class="pillar-card reveal-up" style="display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 24px 28px; margin: 0;">
+                        <span style="font-weight: bold; color: var(--secondary); font-size: 1.15rem; line-height: 1; margin-top: 2px;">✓</span>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.95rem; line-height: 1.65;"><strong>Connection Audit:</strong> Identify precisely where the parent-child bond is breaking down — and how to begin repairing it.</p>
+                    </div>
+                    <div class="pillar-card reveal-up" style="display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 24px 28px; margin: 0;">
+                        <span style="font-weight: bold; color: var(--secondary); font-size: 1.15rem; line-height: 1; margin-top: 2px;">✓</span>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.95rem; line-height: 1.65;"><strong>Framework Intro:</strong> A straightforward walk-through of the <strong>Empowered Parent Blueprint</strong> steps.</p>
+                    </div>
+                    <div class="pillar-card reveal-up" style="display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 24px 28px; margin: 0;">
+                        <span style="font-weight: bold; color: var(--secondary); font-size: 1.15rem; line-height: 1; margin-top: 2px;">✓</span>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.95rem; line-height: 1.65;"><strong>Actionable Tools:</strong> At least one practical mindful parenting change you can implement the very same day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bio Section -->
+        <section class="section rollercoaster-section" id="bioSection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="max-width: 950px; position: relative; z-index: 2;">
+                <div class="two-col-grid" style="align-items: center; gap: 60px;">
+                    <div style="text-align: left;" class="reveal-up">
+                        <span class="section-label">Meet Your Guide</span>
+                        <h2 class="section-title" style="margin-bottom: 24px; font-size: 2.2rem;">😊 Hello, I'm Dr. Gargee</h2>
+                        
+                        <ul class="content-list" style="margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px;">
+                            <li><strong>Mindful Parenting Coach</strong> &amp; creator of the Empowered Parent Blueprint.</li>
+                            <li>Specialized in helping parents &amp; children achieve academic focus without stress, guilt, or constant fighting.</li>
+                            <li>Has partnered with hundreds of families to rebuild calm, daily structure, and confidence at home.</li>
+                            <li>Trusted by parents across India for practical, empathetic, and judgment-free guidance.</li>
+                            <li>Integrates child developmental psychology, co-regulation, and high-performance learning strategies.</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-card float-slow" style="padding: 12px; max-width: 360px; margin: 0 auto;">
+                        <img src="img/dr_gargee_profile.png" alt="Dr. Gargee Gadgil" style="max-width: 100%; border-radius: 12px; display: block; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (Clean minimalist borders) -->
+        <section class="section rollercoaster-section" id="faqSection" style="padding: 100px 0; position: relative;">
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                    <span class="section-label">Questions?</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="faq-row-section">
+                    <!-- FAQ 1 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>Is the discovery call really free?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>Yes, the initial 30-minute discovery call is 100% free. It is a dedicated chance for us to connect, discuss the parenting challenges you're facing, and explore if my coaching program is a good fit for your family. There is absolutely no pressure or obligation to book paid sessions.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>How long is the call and how is it conducted?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>The call is 30 minutes long and is conducted entirely online via Zoom or Google Meet. Once your request is processed, you will receive a calendar link and meeting invite directly via WhatsApp or email.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>My child is older / younger — will this help me?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>Yes. The mindful parenting principles of the Empowered Parent Blueprint are fully adaptable to children of all age groups, from toddlers to teenagers. During our call, we will focus specifically on your child's age, personality, and developmental stage.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>What if both parents want to join?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>Both parents are highly encouraged to join! Having both mother and father aligned on strategies and communication patterns is one of the most effective ways to establish a consistent, calm household dynamic.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>Will Dr. Gargee try to sell me something?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>There are no high-pressure sales tactics. The call is designed to offer genuine, immediate value. If we feel like a great fit and you'd like to work together, I will share details of my coaching program at the end, but the choice is entirely yours.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 6 -->
+                    <div class="faq-row reveal-up">
+                        <button class="faq-row-trigger" type="button">
+                            <span>What happens after I fill the form?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-row-panel">
+                            <p>Once you submit the booking form below, Dr. Gargee will reach out to you via WhatsApp or email within 24 to 48 hours to confirm your scheduled time slot and send over your video meeting link.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form Section -->
+        <section class="section rollercoaster-section" id="bookingSection" style="padding: 100px 0; position: relative;">
+            <div id="book-call" style="position: absolute; top: -80px;"></div>
+            <div class="container" style="max-width: 680px; text-align: center; position: relative; z-index: 2;">
+                <span class="section-label">Apply Now</span>
+                <h2 class="section-title" style="margin-bottom: 16px;">Request Your Free 1:1 Discovery Call</h2>
+                <p style="color: var(--text-light); margin-bottom: 40px; line-height: 1.6;">Fill out the form below. I will reach out to you via WhatsApp/Email to confirm your scheduled slot.</p>
+                
+                <div class="perspective-container reveal-up">
+                    <div class="contact-form-wrapper card-3d-tilt pillar-card" id="bookingCard" style="text-align: left;">
+                        <form class="contact-form" id="bookingForm">
+                            <div class="form-group">
+                                <input type="text" id="bookingName" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="bookingEmail" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="bookingPhone" name="phone" placeholder="WhatsApp Number" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="childAge" name="childAge" required>
+                                    <option value="" disabled selected>Select Your Child's Age Group</option>
+                                    <option value="toddler">Toddler (1-3 years)</option>
+                                    <option value="preschool">Preschooler (4-5 years)</option>
+                                    <option value="primary">Primary Schooler (6-10 years)</option>
+                                    <option value="middle">Middle Schooler (11-13 years)</option>
+                                    <option value="teen">Teenager (14+ years)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="bookingMessage" name="message" placeholder="What are the biggest challenges you're facing with your child right now? (e.g., studies, yelling, routines...)" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full magnetic">Request Free Call via WhatsApp</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 36px; font-size: 0.9rem; color: var(--text-light); font-style: italic;">
+                    "P.S. — You don't have to be a 'perfect parent.' You just have to be a present one. Let's start there." 💛
+                </p>
+            </div>
+        </section>
+    </div>
 
     <div id="site-footer"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/layout.js"></script>
     <script>initLayout();</script>
     <script src="js/main.js"></script>
+    
+    <!-- High-Performance Scroll Calculations and GSAP triggers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. FAQ Accordions Toggles (Optimized rows)
+            const faqRows = document.querySelectorAll('.faq-row');
+            faqRows.forEach(row => {
+                const trigger = row.querySelector('.faq-row-trigger');
+                const panel = row.querySelector('.faq-row-panel');
+                
+                trigger.addEventListener('click', () => {
+                    const isActive = row.classList.contains('active');
+                    
+                    // Close all others
+                    faqRows.forEach(other => {
+                        other.classList.remove('active');
+                        other.querySelector('.faq-row-panel').style.maxHeight = null;
+                    });
+                    
+                    // Toggle current
+                    if (!isActive) {
+                        row.classList.add('active');
+                        panel.style.maxHeight = (panel.scrollHeight + 10) + "px";
+                    } else {
+                        row.classList.remove('active');
+                        panel.style.maxHeight = null;
+                    }
+                });
+            });
+
+            // 2. Custom Booking Form Submission via WhatsApp
+            const form = document.getElementById('bookingForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('bookingName').value;
+                    const email = document.getElementById('bookingEmail').value;
+                    const phone = document.getElementById('bookingPhone').value;
+                    const childAgeSelect = document.getElementById('childAge');
+                    const childAgeText = childAgeSelect.options[childAgeSelect.selectedIndex].text;
+                    const message = document.getElementById('bookingMessage').value;
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+                    
+                    let msg = `Hi ${SITE_CONFIG.doctor.shortName},\n\n`;
+                    msg += `I would like to request a Free 1:1 Mindful Parenting Discovery Call (Empowered Parent Blueprint).\n\n`;
+                    msg += `Name: ${name}\n`;
+                    msg += `Email: ${email}\n`;
+                    msg += `WhatsApp: ${phone}\n`;
+                    msg += `Child's Age Group: ${childAgeText}\n`;
+                    msg += `\nChallenges faced:\n${message}`;
+                    
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Opening WhatsApp...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        window.open(buildWhatsAppUrl(msg), '_blank');
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        form.reset();
+                        alert('WhatsApp has been opened with your pre-filled request! Dr. Gargee will confirm your slot within 24-48 hours.');
+                    }, 600);
+                });
+            }
+
+            // ==========================================
+            // HIGH-PERFORMANCE SCROLL ANIMATIONS (GSAP)
+            // ==========================================
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+
+                const activeLine = document.getElementById('progressLineActive');
+                
+                // GPU-Accelerated vertical progress line drawing
+                if (activeLine && window.innerWidth > 991) {
+                    gsap.killTweensOf(activeLine);
+                    gsap.to(activeLine, {
+                        scaleY: 1,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '#parentsWrapper',
+                            start: 'top top',
+                            end: 'bottom bottom',
+                            scrub: 0.1
+                        }
+                    });
+                }
+
+                // --- STAGGERED REVEALS & CARD MOVEMENT ANIMATIONS ---
+                
+                // 1. Struggles cards slide in and rotate slightly
+                gsap.utils.toArray('.timeline-card').forEach(card => {
+                    const slideFrom = card.getAttribute('data-slide-from') === 'left' ? -150 : 150;
+                    gsap.fromTo(card,
+                        { opacity: 0, x: slideFrom },
+                        {
+                            opacity: 1,
+                            x: 0,
+                            duration: 0.9,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 85%',
+                                toggleActions: 'play none none none'
+                            }
+                        }
+                    );
+                });
+
+                // 2. Why Fights Section scale-up reveal
+                gsap.fromTo('#rootCausesGrid .pillar-card',
+                    { opacity: 0, scale: 0.9, y: 30 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: '#whyFightsSection',
+                            start: 'top 80%'
+                        }
+                    }
+                );
+
+                // 3. Outcomes cards reveal sequentially
+                gsap.fromTo('#outcomesSection .tarot-outcome-card',
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: 'power3.out',
+                        stagger: 0.12,
+                        scrollTrigger: {
+                            trigger: '#outcomesSection',
+                            start: 'top 75%'
+                        }
+                    }
+                );
+
+                // 4. Bio Section reveals
+                gsap.fromTo('#bioSection .reveal-up',
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: '#bioSection',
+                            start: 'top 80%'
+                        }
+                    }
+                );
+
+                // --- THEME SWITCHING (Sage <-> Midnight) ---
+                ScrollTrigger.create({
+                    trigger: '#strugglesSection',
+                    start: 'top 50%',
+                    end: 'bottom 20%',
+                    onEnter: () => {
+                        document.body.classList.remove('theme-sage');
+                        document.body.classList.add('theme-midnight');
+                    },
+                    onLeave: () => {
+                        document.body.classList.remove('theme-midnight');
+                        document.body.classList.add('theme-sage');
+                    },
+                    onEnterBack: () => {
+                        document.body.classList.remove('theme-sage');
+                        document.body.classList.add('theme-midnight');
+                    },
+                    onLeaveBack: () => {
+                        document.body.classList.remove('theme-midnight');
+                        document.body.classList.add('theme-sage');
+                    }
+                });
+
+                // --- 3D TILTING BOOKING CARD ---
+                const bookingCard = document.getElementById('bookingCard');
+                if (bookingCard && window.innerWidth > 991) {
+                    bookingCard.addEventListener('mousemove', (e) => {
+                        const rect = bookingCard.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const xc = rect.width / 2;
+                        const yc = rect.height / 2;
+                        const angleX = -(y - yc) / 25; 
+                        const angleY = (x - xc) / 25;
+                        
+                        gsap.to(bookingCard, {
+                            rotateX: angleX,
+                            rotateY: angleY,
+                            transformPerspective: 1200,
+                            ease: 'power1.out',
+                            duration: 0.25
+                        });
+                    });
+                    
+                    bookingCard.addEventListener('mouseleave', () => {
+                        gsap.to(bookingCard, {
+                            rotateX: 0,
+                            rotateY: 0,
+                            ease: 'power3.out',
+                            duration: 0.6
+                        });
+                    });
+                }
+
+                // --- TAROT OUTCOMES FLIP LOCK LOGIC ---
+                const tarotCards = document.querySelectorAll('.tarot-outcome-card');
+                tarotCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.classList.add('flipped');
+                    });
+                    card.addEventListener('click', () => {
+                        card.classList.add('flipped');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

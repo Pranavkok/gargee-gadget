@@ -35,6 +35,7 @@ function initLayout() {
                                 ).join('')}
                             </ul>
                         </li>
+                        <li><a href="${root}parents.html" class="hover-text" data-text="For Parents">For Parents</a></li>
                         <li><a href="${root}resources.html" class="hover-text" data-text="Resources">Resources</a></li>
                         <li><a href="${root}journal/index.html" class="hover-text" data-text="Journal">Journal</a></li>
                         <li><a href="${root}contact.html" class="nav-cta">Book a Session</a></li>
